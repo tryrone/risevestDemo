@@ -8,6 +8,8 @@ import CustomText from '../../components/CustomText';
 import styled from 'styled-components/native';
 import {BackArrow, RightArrow} from '../../assets/svgs';
 import Button from '../../components/Button';
+import {ScreenDefaultProps} from '../../navigation/nativationType';
+import {SIGN_IN, SIGN_UP} from '../../navigation/constants';
 
 const {width, height} = Dimensions.get('window');
 
@@ -40,7 +42,7 @@ const Row = styled.View`
   width: 100%;
 `;
 
-const Onboarding = () => {
+const Onboarding = ({navigation}: ScreenDefaultProps) => {
   const flatListRef = useRef<any>(null);
   const [activeIndex, setActiveIndex] = useState<number | any>(0);
 
@@ -115,6 +117,7 @@ const Onboarding = () => {
             textColor={Colors.white}
             textSize={15}
             fontWeight="700"
+            onPress={() => navigation.navigate(SIGN_UP)}
           />
           <Button
             text="Sign In"
@@ -123,6 +126,7 @@ const Onboarding = () => {
             textColor={Colors.primary}
             textSize={15}
             fontWeight="700"
+            onPress={() => navigation.navigate(SIGN_IN)}
           />
         </View>
       );

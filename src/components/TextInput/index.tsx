@@ -1,5 +1,4 @@
-/* eslint-disable react-native/no-inline-styles */
-
+/* eslint-disable react-hooks/exhaustive-deps */
 import React, {useEffect, useState} from 'react';
 import {
   KeyboardTypeOptions,
@@ -55,10 +54,9 @@ const Wrapper = styled.View<{
 }>`
   height: 56px;
   width: ${props => props?.width || 100}%;
-  border-width: 2px;
-  border-color: ${props =>
-    props?.active ? 'rgba(18,0,55, 0.6)' : Colors?.border};
-  border-radius: 8px;
+  border-width: 1px;
+  border-color: ${props => (props?.active ? Colors.primary : Colors?.border)};
+  border-radius: 5px;
   flex-direction: row;
   align-items: center;
   justify-content: space-between;
@@ -83,8 +81,8 @@ const TextWrap: any = styled.TextInput`
   height: 100%;
   width: 100%;
   font-family: ${Fonts?.DMSansRegular};
-  font-size: 14px;
-  font-weight: 400;
+  font-size: 15px;
+  font-weight: 700;
   color: ${Colors?.black};
   align-items: center;
 `;
@@ -112,8 +110,8 @@ const InputWithIcon = styled.Pressable<{
   background-color: ${({bgColor}) => bgColor};
   padding-horizontal: 16px;
   height: 55px;
-  border-radius: 8px;
-  border-width: 2px;
+  border-radius: 5px;
+  border-width: 1px;
   border-color: ${props => (props?.active ? Colors.primary : Colors?.border)};
   justify-content: space-between;
   align-items: center;
@@ -125,10 +123,10 @@ const PasswordInput = styled.TextInput<{
   width: ${({width}) => width || '100%'};
   color: ${Colors?.black}
   height: 52px;
-  font-weight: 400;
   text-align: left;
   justify-content: center;
-  font-size: 12px;
+  font-size: 15px;
+  font-weight: 700;
 `;
 
 const TextInput = ({
@@ -147,8 +145,8 @@ const TextInput = ({
 }: TextInputProps) => {
   const [focused, setFocused] = useState(false);
 
-  const translateY = useSharedValue(45);
-  const animatedIndex = useSharedValue(0);
+  const translateY = useSharedValue(value ? 18 : 45);
+  const animatedIndex = useSharedValue(value ? 5 : 0);
 
   const animatedStyles = useAnimatedStyle(() => {
     return {
@@ -162,6 +160,10 @@ const TextInput = ({
       translateY.value = withTiming(18);
       animatedIndex.value = withTiming(5);
     }
+    if (!focused && !value) {
+      translateY.value = withTiming(45);
+      animatedIndex.value = withTiming(0);
+    }
   }, [focused, translateY, animatedIndex]);
 
   useEffect(() => {
@@ -171,7 +173,7 @@ const TextInput = ({
   }, [errors]);
 
   return (
-    <Pressable>
+    <Pressable style={{marginTop}}>
       {disabled && (
         <DisabledView
           onPress={() => {
@@ -192,9 +194,9 @@ const TextInput = ({
           }}
           fontFamily={Fonts.DMSansMedium}
           bottom={4}
-          fontSize={14}
-          fontWeight="600"
-          color={focused ? Colors?.black : placeholderTextColor}>
+          fontSize={focused || value ? 12 : 15}
+          fontWeight="700"
+          color={focused ? Colors?.primary : placeholderTextColor}>
           {placeholder}
         </CustomText>
       </Animated.View>
@@ -232,7 +234,7 @@ const TextInput = ({
       {errors.length > 0 && (
         <View>
           <CustomText
-            fontWeight="500"
+            fontWeight="600"
             top={4}
             left={5}
             fontFamily={Fonts?.DMSansMedium}
@@ -262,8 +264,8 @@ export const Password = ({
   const [hidden, setHidden] = useState(false);
   const [focused, setFocused] = useState(false);
 
-  const translateY = useSharedValue(45);
-  const animatedIndex = useSharedValue(0);
+  const translateY = useSharedValue(value ? 18 : 45);
+  const animatedIndex = useSharedValue(value ? 3 : 0);
 
   const animatedStyles = useAnimatedStyle(() => {
     return {
@@ -276,6 +278,10 @@ export const Password = ({
     if (focused) {
       translateY.value = withTiming(18);
       animatedIndex.value = withTiming(3);
+    }
+    if (!focused && !value) {
+      translateY.value = withTiming(45);
+      animatedIndex.value = withTiming(0);
     }
   }, [focused, translateY, animatedIndex]);
 
@@ -302,9 +308,9 @@ export const Password = ({
           }}
           fontFamily={Fonts.DMSansMedium}
           bottom={4}
-          fontSize={14}
-          fontWeight="600"
-          color={focused ? Colors?.black : placeholderTextColor}>
+          fontSize={focused || value ? 12 : 15}
+          fontWeight="700"
+          color={focused ? Colors?.primary : placeholderTextColor}>
           {placeholder}
         </CustomText>
       </Animated.View>
@@ -333,7 +339,7 @@ export const Password = ({
       {errors.length > 0 && (
         <View>
           <CustomText
-            fontWeight="500"
+            fontWeight="600"
             top={3}
             left={5}
             fontFamily={Fonts?.DMSansMedium}
