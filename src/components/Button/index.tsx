@@ -1,10 +1,28 @@
-/* eslint-disable react-native/no-inline-styles */
 import {ActivityIndicator, Platform, ViewStyle, View} from 'react-native';
 import React from 'react';
 import Colors from '../../constants/Colors';
 import styled from 'styled-components/native';
 import CustomText from '../CustomText';
 import Fonts from '../../constants/Fonts';
+
+type ButtonProps = {
+  text: string;
+  bgColor?: string;
+  textColor?: string;
+  width?: string;
+  height?: string;
+  borderRadius?: string;
+  jc?: string;
+  style?: ViewStyle;
+  loading?: boolean;
+  disabled?: boolean;
+  textSize?: number;
+  icon?: JSX.Element | null;
+  iconRight?: boolean;
+  fontWeight?: string;
+  onPress?: any;
+  fontFamily?: string;
+};
 
 const BtnWrap = styled.TouchableOpacity<{
   width?: string;
@@ -50,25 +68,6 @@ const Row = styled.View`
   flex-direction: row;
   align-items: center;
 `;
-
-type ButtonProps = {
-  text: string;
-  bgColor?: string;
-  textColor?: string;
-  width?: string;
-  height?: string;
-  borderRadius?: string;
-  jc?: string;
-  style?: ViewStyle;
-  loading?: boolean;
-  disabled?: boolean;
-  textSize?: number;
-  icon?: JSX.Element | null;
-  iconRight?: boolean;
-  fontWeight?: string;
-  onPress?: any;
-  fontFamily?: string;
-};
 
 const Button = ({
   text = '',
