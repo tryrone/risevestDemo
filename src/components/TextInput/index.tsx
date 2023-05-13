@@ -1,5 +1,5 @@
 /* eslint-disable react-hooks/exhaustive-deps */
-import React, {useEffect, useState} from 'react';
+import React, {useEffect, useRef, useState} from 'react';
 import {
   Dimensions,
   KeyboardTypeOptions,
@@ -23,7 +23,6 @@ import {
   HidePassword,
   CalenderIcon,
 } from '../../assets/svgs';
-import OtpInputs from 'react-native-otp-inputs';
 import PhonePadKeyboard from '../NumberPad';
 
 const {width: screenWidth} = Dimensions.get('window');
@@ -60,7 +59,21 @@ type PasswordProps = {
 
 type CodeInputProps = {
   mt?: number;
+  keyboardContainerStyle?: ViewStyle;
+  onComplete: (val: string) => void;
 };
+
+const BoxCodeInput = styled.TextInput`
+  height: 42px;
+  width: 42px;
+  align-items: center;
+  justify-content: center;
+  text-align: center;
+  border-width: 1px;
+  border-color: ${Colors.primary};
+  border-radius: 5px;
+  margin-right: 13px;
+`;
 
 const Row = styled.View`
   flex-direction: row;
@@ -607,59 +620,100 @@ export const CalendarInput = ({
   );
 };
 
-export const CodeInput = ({mt}: CodeInputProps): JSX.Element => {
-  const [enteredText, setEnteredText] = useState<string>('');
+export const CodeInput = ({
+  mt,
+  keyboardContainerStyle,
+  onComplete,
+}: CodeInputProps): JSX.Element => {
+  const [otp, setOtp] = useState(['', '', '', '', '', '']);
 
-  const handleKeyPress = (key: string | number) => {
-    setEnteredText(enteredText + key);
+  const otpInputs = useRef<any>([]);
+
+  const handleOtpChange = (index: number, value: string) => {
+    const updatedOtp = [...otp];
+    updatedOtp[index] = value;
+    setOtp(updatedOtp);
+
+    if (value && index < otp.length - 1) {
+      otpInputs.current[index + 1].focus();
+    }
   };
 
-  const handleDelete = () => {
-    setEnteredText(enteredText.slice(0, -1));
+  const handleOtpKeyPress = (index: number, key: string) => {
+    if (key === 'Backspace' && index > 0) {
+      otpInputs.current[index - 1].focus();
+    }
   };
+
+  const handleKeyPress = (key: string) => {
+    if (key === 'Backspace') {
+      handleOtpKeyPress(
+        otp.findIndex(digit => digit === ''),
+        key,
+      );
+    } else {
+      const emptyDigitIndex = otp.findIndex(digit => digit === '');
+      if (emptyDigitIndex !== -1) {
+        handleOtpChange(emptyDigitIndex, key);
+      }
+    }
+  };
+
+  const handleDelete = (val: number | undefined) => {
+    const filledDigitIndex = otp.findIndex(digit => digit !== '');
+    if (filledDigitIndex !== -1) {
+      handleOtpChange((val && val) || filledDigitIndex, '');
+      otpInputs.current[(val && val) || filledDigitIndex].focus();
+    } else {
+      handleOtpKeyPress(otp.length - 1, 'Backspace');
+    }
+  };
+
+  useEffect(() => {
+    if (otp.every(digit => digit !== '')) {
+      const otpString = otp.join('');
+      // Perform any action with the complete OTP string
+      onComplete(otpString);
+    }
+  }, [otp]);
 
   return (
     <>
-      <OtpInputs
-        autofillFromClipboard={true}
-        editable={false}
-        inputStyles={{
-          height: 42,
-          width: 42,
-          borderWidth: 1,
-          borderColor: Colors.light_grey,
-          borderRadius: 5,
-          paddingHorizontal: 15,
-          paddingVertical: 12,
-          marginRight: 13,
-        }}
-        focusStyles={{
-          height: 42,
-          width: 42,
-          borderWidth: 1,
-          borderColor: Colors.primary,
-          borderRadius: 5,
-          marginRight: 13,
-        }}
-        value={enteredText}
+      <View
         style={{
-          margin: 0,
-          marginTop: mt,
           flexDirection: 'row',
-        }}
-        numberOfInputs={6}
-        handleChange={() => {}}
-      />
+          alignItems: 'center',
+          marginTop: mt,
+        }}>
+        {otp.map((digit, index) => (
+          <BoxCodeInput
+            key={index}
+            ref={(input: any) => (otpInputs.current[index] = input)}
+            value={digit}
+            onChangeText={value => handleOtpChange(index, value)}
+            onKeyPress={({nativeEvent: {key}}) => handleOtpKeyPress(index, key)}
+            maxLength={1}
+            keyboardType="numeric"
+            selectTextOnFocus
+            secureTextEntry
+          />
+        ))}
+      </View>
 
       <PhonePadKeyboard
-        onKeyPress={(val: string | number) => {
-          console.log({val});
+        onKeyPress={(val: string) => {
           if (val === 'delete') {
-            handleDelete();
+            const allFilledItems = otp.filter(item => item !== '');
+            const currentIndex = otp.indexOf(
+              allFilledItems[allFilledItems.length - 1],
+            );
+
+            handleDelete(currentIndex);
           } else {
-            handleKeyPress('123456');
+            handleKeyPress(val);
           }
         }}
+        containerStyle={keyboardContainerStyle}
       />
     </>
   );

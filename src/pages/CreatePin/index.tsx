@@ -6,6 +6,7 @@ import {ScreenDefaultProps} from '../../navigation/nativationType';
 import CustomText from '../../components/CustomText';
 import Colors from '../../constants/Colors';
 import {CodeInput} from '../../components/TextInput';
+import {CONFIRM_PIN} from '../../navigation/constants';
 
 const CreatePin = ({navigation}: ScreenDefaultProps) => {
   return (
@@ -33,7 +34,18 @@ const CreatePin = ({navigation}: ScreenDefaultProps) => {
         You’ll use this PIN to sign in and confirm transactions
       </CustomText>
 
-      <CodeInput mt={21} />
+      <CodeInput
+        mt={31}
+        keyboardContainerStyle={{
+          position: 'absolute',
+          bottom: '15%',
+          alignSelf: 'center',
+        }}
+        onComplete={(val: string) => {
+          console.log({val});
+          navigation.navigate(CONFIRM_PIN);
+        }}
+      />
     </SafeAreaWrap>
   );
 };

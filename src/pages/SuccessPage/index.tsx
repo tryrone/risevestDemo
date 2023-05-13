@@ -34,7 +34,7 @@ const SuccessPage = ({navigation, route}: ScreenDefaultProps) => {
         align="center"
         top={10}
         color={Colors.grey_2}
-        style={{width: '60%', lineHeight: '22px'}}>
+        style={{width: '70%', lineHeight: '22px'}}>
         {body}
       </CustomText>
 
