@@ -45,7 +45,7 @@ const SignUp = ({navigation}: ScreenDefaultProps) => {
         fontSize={20}
         fontWeight="500"
         color={Colors.black_2}
-        top={40}>
+        top={20}>
         Create Account
       </CustomText>
 

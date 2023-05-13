@@ -1,4 +1,3 @@
-/* eslint-disable react-native/no-inline-styles */
 import {View, SafeAreaView, ViewStyle} from 'react-native';
 import React from 'react';
 import Colors from '../../constants/Colors';

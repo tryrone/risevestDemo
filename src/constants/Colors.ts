@@ -4,6 +4,7 @@ export default {
   white_2: 'rgba(246, 245, 250, 0.09)',
   black: '#000000',
   black_2: '#222222',
+  black_3: '#012224',
   light_orange: '#FEFAF7',
   light_pink: '#FDF4F9',
   light_green: '#F6FFFE',

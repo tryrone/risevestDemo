@@ -9,6 +9,9 @@ import OnboardingTwoSvg from './onboarding_two.svg';
 import OnboardingThreeSvg from './onboarding_three.svg';
 import BackArrow from './back_arrow.svg';
 import RightArrow from './right_arrow.svg';
+import ChevDown from './chev_down.svg';
+import SuccessCheck from './success_check.svg';
+import DeleteIcon from './delete_btn.svg';
 
 export {
   ActivePassword,
@@ -22,4 +25,7 @@ export {
   OnboardingThreeSvg,
   BackArrow,
   RightArrow,
+  ChevDown,
+  SuccessCheck,
+  DeleteIcon,
 };
