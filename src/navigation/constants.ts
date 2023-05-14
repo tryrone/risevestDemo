@@ -5,3 +5,4 @@ export const ABOUT_YOURSELF = 'ABOUT_YOURSELF';
 export const SUCCESS_PAGE = 'SUCCESS_PAGE';
 export const CREATE_PIN = 'CREATE_PIN';
 export const CONFIRM_PIN = 'CONFIRM_PIN';
+export const BOTTOM_NAV = 'BOTTOM_NAV';

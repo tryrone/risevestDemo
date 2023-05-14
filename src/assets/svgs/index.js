@@ -12,6 +12,10 @@ import RightArrow from './right_arrow.svg';
 import ChevDown from './chev_down.svg';
 import SuccessCheck from './success_check.svg';
 import DeleteIcon from './delete_btn.svg';
+import FeedIcon from './feed.svg';
+import HomeIcon from './home.svg';
+import PlansIcon from './plans.svg';
+import WalletIcon from './wallet.svg';
 
 export {
   ActivePassword,
@@ -28,4 +32,8 @@ export {
   ChevDown,
   SuccessCheck,
   DeleteIcon,
+  FeedIcon,
+  HomeIcon,
+  PlansIcon,
+  WalletIcon,
 };
