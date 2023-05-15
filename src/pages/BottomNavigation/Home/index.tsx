@@ -2,22 +2,15 @@ import React from 'react';
 import styled from 'styled-components/native';
 import CardSafeAreaWrap from './components/cardSafeArea';
 import Colors from '../../../constants/Colors';
-import CustomText from '../../../components/CustomText';
 import {rainbow} from '../../../assets/images';
-import {View} from 'react-native';
-import {BellIcon} from '../../../assets/svgs';
+import HeaderComponent from './components/headerComponent';
+import AccountCard from './components/accountCard';
 import Button from '../../../components/Button';
-
-const SpacedRow = styled.View`
-  flex-direction: row;
-  align-items: center;
-  justify-content: space-between;
-  width: 100%;
-`;
+import {PlusIcon} from '../../../assets/svgs';
 
 const RainbowWrap = styled.ImageBackground`
   width: 100%;
-  height: 60%;
+  height: 65%;
 `;
 
 const PaddedView = styled.View`
@@ -25,41 +18,32 @@ const PaddedView = styled.View`
   width: 100%;
 `;
 
-const Row = styled.View`
-  flex-direction: row;
-  align-items: center;
-`;
-
 const Home = () => {
   return (
     <CardSafeAreaWrap safeAreaBg={Colors?.white} bg={Colors.white}>
       <RainbowWrap source={rainbow} resizeMode="stretch">
         <PaddedView>
-          <SpacedRow>
-            <View style={{marginTop: 14}}>
-              <CustomText color={Colors.black_4} fontSize={15} fontWeight="400">
-                Good morning ☀
-              </CustomText>
-              <CustomText color={Colors.black_4} fontSize={20} fontWeight="400">
-                Deborah
-              </CustomText>
-            </View>
-
-            <Row style={{justifyContent: 'flex-end'}}>
-              <Button
-                text="Earn 3% bonus"
-                width="60%"
-                containerStyle={{position: 'relative', right: 20}}
-                height="30px"
-                borderRadius="50px"
-                textColor={Colors.white}
-                textSize={12}
-                fontWeight="400"
-                bgColor={Colors.primary}
+          <HeaderComponent />
+          <AccountCard />
+          <Button
+            text="Add money"
+            bgColor={Colors.white}
+            borderRadius="5px"
+            textColor={Colors.primary}
+            textSize={15}
+            fontWeight="700"
+            height="56px"
+            icon={
+              <PlusIcon
+                style={{position: 'relative', top: -2, marginRight: 5}}
               />
-              <BellIcon style={{position: 'relative', right: 10}} />
-            </Row>
-          </SpacedRow>
+            }
+            style={{
+              borderColor: Colors.light_grey,
+              borderWidth: 1,
+              marginTop: 24,
+            }}
+          />
         </PaddedView>
       </RainbowWrap>
     </CardSafeAreaWrap>

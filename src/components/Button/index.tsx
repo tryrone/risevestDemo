@@ -9,7 +9,7 @@ type ButtonProps = {
   text: string;
   bgColor?: string;
   textColor?: string;
-  width?: string;
+  width?: string | number;
   height?: string;
   borderRadius?: string;
   jc?: string;

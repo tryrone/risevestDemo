@@ -17,6 +17,10 @@ import HomeIcon from './home.svg';
 import PlansIcon from './plans.svg';
 import WalletIcon from './wallet.svg';
 import BellIcon from './bell.svg';
+import ProfitIcon from './profit_arrow.svg';
+import ChevRightIcon from './chev_right.svg';
+import PlusBtnIcon from './plus_btn.svg';
+import PlusIcon from './plus.svg';
 
 export {
   ActivePassword,
@@ -38,4 +42,8 @@ export {
   PlansIcon,
   WalletIcon,
   BellIcon,
+  ProfitIcon,
+  ChevRightIcon,
+  PlusBtnIcon,
+  PlusIcon,
 };

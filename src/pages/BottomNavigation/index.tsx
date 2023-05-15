@@ -105,6 +105,11 @@ const BottomNavigation = () => {
         <Tab.Screen
           name="Plans"
           component={Plans}
+          listeners={{
+            tabPress: (e: any) => {
+              e.preventDefault();
+            },
+          }}
           options={{
             tabBarLabel: ({focused}) =>
               RenderComponentLabel({focused, text: 'Plans'}),
@@ -122,6 +127,11 @@ const BottomNavigation = () => {
         <Tab.Screen
           name="Wallet"
           component={Wallet}
+          listeners={{
+            tabPress: (e: any) => {
+              e.preventDefault();
+            },
+          }}
           options={{
             tabBarLabel: ({focused}) =>
               RenderComponentLabel({focused, text: 'Wallet'}),
@@ -138,6 +148,11 @@ const BottomNavigation = () => {
 
         <Tab.Screen
           name="Feed"
+          listeners={{
+            tabPress: (e: any) => {
+              e.preventDefault();
+            },
+          }}
           component={Feed}
           options={{
             tabBarLabel: ({focused}) =>
@@ -153,6 +168,11 @@ const BottomNavigation = () => {
 
         <Tab.Screen
           name="Account"
+          listeners={{
+            tabPress: (e: any) => {
+              e.preventDefault();
+            },
+          }}
           component={Account}
           options={{
             tabBarLabel: ({focused}) =>

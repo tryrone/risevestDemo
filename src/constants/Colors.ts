@@ -20,4 +20,5 @@ export default {
   light_grey_2: 'rgba(113, 135, 156, 0.1)',
   grey_arrow: 'rgba(148, 161, 173, 1)',
   inactiveIcon: '#94A1AD',
+  green: '#27BF41',
 };
