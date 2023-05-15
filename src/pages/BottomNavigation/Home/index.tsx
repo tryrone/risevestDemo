@@ -7,23 +7,32 @@ import HeaderComponent from './components/headerComponent';
 import AccountCard from './components/accountCard';
 import Button from '../../../components/Button';
 import {PlusIcon} from '../../../assets/svgs';
+import CreatePlan from './components/createPlan';
+import {ScrollView} from 'react-native';
+import ContactUs from './components/contactUs';
+import QuoteCard from './components/quoteCard';
 
-const RainbowWrap = styled.ImageBackground`
+const RainbowWrap = styled.Image`
   width: 100%;
-  height: 65%;
+  height: 40%;
+  position: absolute;
+  top: 0;
+  left: 0;
 `;
 
 const PaddedView = styled.View`
   padding-horizontal: 20px;
   width: 100%;
+  padding-bottom: 40px;
 `;
 
 const Home = () => {
   return (
     <CardSafeAreaWrap safeAreaBg={Colors?.white} bg={Colors.white}>
-      <RainbowWrap source={rainbow} resizeMode="stretch">
-        <PaddedView>
-          <HeaderComponent />
+      <RainbowWrap source={rainbow} resizeMode="stretch" />
+      <PaddedView>
+        <HeaderComponent />
+        <ScrollView showsVerticalScrollIndicator={false}>
           <AccountCard />
           <Button
             text="Add money"
@@ -44,8 +53,11 @@ const Home = () => {
               marginTop: 24,
             }}
           />
-        </PaddedView>
-      </RainbowWrap>
+          <CreatePlan />
+          <ContactUs />
+          <QuoteCard />
+        </ScrollView>
+      </PaddedView>
     </CardSafeAreaWrap>
   );
 };

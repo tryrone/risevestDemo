@@ -21,6 +21,9 @@ import ProfitIcon from './profit_arrow.svg';
 import ChevRightIcon from './chev_right.svg';
 import PlusBtnIcon from './plus_btn.svg';
 import PlusIcon from './plus.svg';
+import QuestionIcon from './plus.svg';
+import ShareIcon from './share_icon.svg';
+import RiseIcon from './rise_icon.svg';
 
 export {
   ActivePassword,
@@ -46,4 +49,7 @@ export {
   ChevRightIcon,
   PlusBtnIcon,
   PlusIcon,
+  QuestionIcon,
+  ShareIcon,
+  RiseIcon,
 };
