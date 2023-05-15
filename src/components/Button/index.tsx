@@ -22,6 +22,7 @@ type ButtonProps = {
   fontWeight?: string;
   onPress?: any;
   fontFamily?: string;
+  containerStyle?: ViewStyle;
 };
 
 const BtnWrap = styled.TouchableOpacity<{
@@ -86,9 +87,10 @@ const Button = ({
   fontWeight,
   onPress = () => {},
   fontFamily = Fonts?.DMSansRegular,
+  containerStyle,
 }: ButtonProps) => {
   return (
-    <View style={{position: 'relative', width}}>
+    <View style={[{position: 'relative', width}, containerStyle]}>
       {disabled && (
         <DisabledWrap
           borderRadius={borderRadius}

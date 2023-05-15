@@ -5,6 +5,7 @@ export default {
   black: '#000000',
   black_2: '#222222',
   black_3: '#012224',
+  black_4: '#333333',
   light_orange: '#FEFAF7',
   light_pink: '#FDF4F9',
   light_green: '#F6FFFE',

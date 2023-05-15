@@ -16,6 +16,7 @@ import FeedIcon from './feed.svg';
 import HomeIcon from './home.svg';
 import PlansIcon from './plans.svg';
 import WalletIcon from './wallet.svg';
+import BellIcon from './bell.svg';
 
 export {
   ActivePassword,
@@ -36,4 +37,5 @@ export {
   HomeIcon,
   PlansIcon,
   WalletIcon,
+  BellIcon,
 };
