@@ -11,6 +11,7 @@ import CreatePlan from './components/createPlan';
 import {ScrollView} from 'react-native';
 import ContactUs from './components/contactUs';
 import QuoteCard from './components/quoteCard';
+import {ScreenDefaultProps} from '../../../navigation/nativationType';
 
 const RainbowWrap = styled.Image`
   width: 100%;
@@ -26,7 +27,7 @@ const PaddedView = styled.View`
   padding-bottom: 40px;
 `;
 
-const Home = () => {
+const Home = ({navigation}: ScreenDefaultProps) => {
   return (
     <CardSafeAreaWrap safeAreaBg={Colors?.white} bg={Colors.white}>
       <RainbowWrap source={rainbow} resizeMode="stretch" />
@@ -53,7 +54,7 @@ const Home = () => {
               marginTop: 24,
             }}
           />
-          <CreatePlan />
+          <CreatePlan navigation={navigation} />
           <ContactUs />
           <QuoteCard />
         </ScrollView>

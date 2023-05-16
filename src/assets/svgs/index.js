@@ -21,9 +21,13 @@ import ProfitIcon from './profit_arrow.svg';
 import ChevRightIcon from './chev_right.svg';
 import PlusBtnIcon from './plus_btn.svg';
 import PlusIcon from './plus.svg';
-import QuestionIcon from './plus.svg';
+import QuestionIcon from './question.svg';
 import ShareIcon from './share_icon.svg';
 import RiseIcon from './rise_icon.svg';
+import CartIcon from './cart.svg';
+import BigQuestionIcon from './big_question.svg';
+import BigCalenderIcon from './big_calender.svg';
+import BigSettingsIcon from './big_settings.svg';
 
 export {
   ActivePassword,
@@ -52,4 +56,8 @@ export {
   QuestionIcon,
   ShareIcon,
   RiseIcon,
+  CartIcon,
+  BigCalenderIcon,
+  BigQuestionIcon,
+  BigSettingsIcon,
 };

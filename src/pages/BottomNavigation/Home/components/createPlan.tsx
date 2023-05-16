@@ -4,6 +4,12 @@ import styled from 'styled-components/native';
 import CustomText from '../../../../components/CustomText';
 import Colors from '../../../../constants/Colors';
 import {ChevRightIcon, PlusBtnIcon} from '../../../../assets/svgs';
+import {CREATE_A_PLAN} from '../../../../navigation/constants';
+import {ScreenDefaultProps} from '../../../../navigation/nativationType';
+
+interface CreatePlanBoxProps {
+  onPress: () => void;
+}
 
 const SpacedRow = styled.View`
   flex-direction: row;
@@ -26,9 +32,9 @@ const CreatePlanWrap = styled.TouchableOpacity`
   align-items: center;
 `;
 
-const CreatePlanBox = (): JSX.Element => {
+const CreatePlanBox = ({onPress}: CreatePlanBoxProps): JSX.Element => {
   return (
-    <CreatePlanWrap>
+    <CreatePlanWrap onPress={onPress}>
       <PlusBtnIcon />
       <CustomText
         color={Colors.black}
@@ -43,7 +49,7 @@ const CreatePlanBox = (): JSX.Element => {
   );
 };
 
-const CreatePlan = () => {
+const CreatePlan = ({navigation}: ScreenDefaultProps) => {
   return (
     <View>
       <SpacedRow>
@@ -73,7 +79,7 @@ const CreatePlan = () => {
       </CustomText>
 
       <View style={{marginTop: 20}}>
-        <CreatePlanBox />
+        <CreatePlanBox onPress={() => navigation.navigate(CREATE_A_PLAN)} />
       </View>
     </View>
   );

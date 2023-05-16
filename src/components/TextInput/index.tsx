@@ -24,6 +24,8 @@ import {
   CalenderIcon,
 } from '../../assets/svgs';
 import PhonePadKeyboard from '../NumberPad';
+import DatePicker from 'react-native-date-picker';
+import moment from 'moment';
 
 const {width: screenWidth} = Dimensions.get('window');
 
@@ -187,12 +189,19 @@ const TextInput = ({
 }: TextInputProps) => {
   const [focused, setFocused] = useState(false);
 
+  const fromTranslateX = showNaira ? 20 : 0;
+  const toTranslateX = 0;
+
+  const translateX = useSharedValue(value ? toTranslateX : fromTranslateX);
   const translateY = useSharedValue(value ? 18 : 45);
   const animatedIndex = useSharedValue(value ? 5 : 0);
 
   const animatedStyles = useAnimatedStyle(() => {
     return {
-      transform: [{translateY: translateY.value}],
+      transform: [
+        {translateY: translateY.value},
+        {translateX: translateX.value},
+      ],
       zIndex: animatedIndex?.value,
     };
   });
@@ -201,10 +210,12 @@ const TextInput = ({
     if (focused) {
       translateY.value = withTiming(18);
       animatedIndex.value = withTiming(5);
+      translateX.value = withTiming(toTranslateX);
     }
     if (!focused && !value) {
       translateY.value = withTiming(45);
       animatedIndex.value = withTiming(0);
+      translateX.value = withTiming(fromTranslateX);
     }
   }, [focused, translateY, animatedIndex]);
 
@@ -246,7 +257,7 @@ const TextInput = ({
       <Wrapper active={focused}>
         {showNaira && (
           <CustomText
-            color={Colors.placeholderColor}
+            color={Colors.primary}
             align="left"
             right={5}
             fontWeight="800"
@@ -540,7 +551,8 @@ export const CalendarInput = ({
   onPress,
 }: PasswordProps) => {
   const [focused, setFocused] = useState(false);
-
+  const [date, setDate] = useState(new Date());
+  const [open, setOpen] = useState(false);
   const translateY = useSharedValue(18);
   const animatedIndex = useSharedValue(3);
 
@@ -586,10 +598,10 @@ export const CalendarInput = ({
         borderColor={focused ? Colors.primary : Colors.border}
         onPress={() => {
           onPress && onPress();
+          setOpen(true);
         }}
         bgColor={bgColor}>
         <PasswordInput
-          onChangeText={handleChange(name)}
           autoCapitalize={'none'}
           width="80%"
           onFocus={() => setFocused(true)}
@@ -603,6 +615,22 @@ export const CalendarInput = ({
 
         <CalenderIcon />
       </InputWithIcon>
+      <DatePicker
+        modal
+        mode="date"
+        maximumDate={new Date(moment().subtract(18, 'years').toDate())}
+        minimumDate={new Date(1900, 1, 1)}
+        open={open}
+        date={date}
+        onConfirm={(dateVal: any): any => {
+          setOpen(false);
+          setDate(dateVal);
+          handleChange(name, moment(dateVal).format('YYYY-MM-DD'));
+        }}
+        onCancel={() => {
+          setOpen(false);
+        }}
+      />
       {errors.length > 0 && (
         <View>
           <CustomText
