@@ -613,7 +613,12 @@ export const CalendarInput = ({
           editable={false}
         />
 
-        <CalenderIcon />
+        <TouchableOpacity
+          onPress={() => {
+            setOpen(true);
+          }}>
+          <CalenderIcon />
+        </TouchableOpacity>
       </InputWithIcon>
       <DatePicker
         modal

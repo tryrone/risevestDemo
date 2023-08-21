@@ -7,6 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		000BEE5E2A6CA4D4830ECFF0 /* libPods-riseVest-riseVestTests.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 5E323C4199AC92599A0B25F2 /* libPods-riseVest-riseVestTests.a */; };
 		00E356F31AD99517003FC87E /* riseVestTests.m in Sources */ = {isa = PBXBuildFile; fileRef = 00E356F21AD99517003FC87E /* riseVestTests.m */; };
 		13B07FBC1A68108700A75B9A /* AppDelegate.mm in Sources */ = {isa = PBXBuildFile; fileRef = 13B07FB01A68108700A75B9A /* AppDelegate.mm */; };
 		13B07FBF1A68108700A75B9A /* Images.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 13B07FB51A68108700A75B9A /* Images.xcassets */; };
@@ -14,9 +15,8 @@
 		35657B0F8CBE44AA84429EC6 /* DMSans-Regular.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 5E9CAE9E5B9C4C44A93A3E84 /* DMSans-Regular.ttf */; };
 		3638E26F9BBF41CBBEC07CA3 /* DMSans-Bold.ttf in Resources */ = {isa = PBXBuildFile; fileRef = EDAE6492790F45D288277786 /* DMSans-Bold.ttf */; };
 		81AB9BB82411601600AC10FF /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 81AB9BB72411601600AC10FF /* LaunchScreen.storyboard */; };
-		C2308BE660518F789CD35C2F /* libPods-riseVest.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 144807B15A2C923A377684F2 /* libPods-riseVest.a */; };
+		BBC535094F37BAD5AC5A4D16 /* libPods-riseVest.a in Frameworks */ = {isa = PBXBuildFile; fileRef = A4E6FB3F4249889287CD48FA /* libPods-riseVest.a */; };
 		E53FDC2CFC33416B98ED0713 /* DMSans-Medium.ttf in Resources */ = {isa = PBXBuildFile; fileRef = C5B8EC6442F64AFBB1DD082A /* DMSans-Medium.ttf */; };
-		FAD09014E6B199EB2AA6DE79 /* libPods-riseVest-riseVestTests.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 3EB2C1F67E39E5DD841A195B /* libPods-riseVest-riseVestTests.a */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -33,20 +33,20 @@
 		00E356EE1AD99517003FC87E /* riseVestTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = riseVestTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		00E356F11AD99517003FC87E /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		00E356F21AD99517003FC87E /* riseVestTests.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = riseVestTests.m; sourceTree = "<group>"; };
+		06D0CA1229E548CBA18D73D3 /* Pods-riseVest.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-riseVest.release.xcconfig"; path = "Target Support Files/Pods-riseVest/Pods-riseVest.release.xcconfig"; sourceTree = "<group>"; };
 		13B07F961A680F5B00A75B9A /* riseVest.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = riseVest.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		13B07FAF1A68108700A75B9A /* AppDelegate.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = AppDelegate.h; path = riseVest/AppDelegate.h; sourceTree = "<group>"; };
 		13B07FB01A68108700A75B9A /* AppDelegate.mm */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.objcpp; name = AppDelegate.mm; path = riseVest/AppDelegate.mm; sourceTree = "<group>"; };
 		13B07FB51A68108700A75B9A /* Images.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; name = Images.xcassets; path = riseVest/Images.xcassets; sourceTree = "<group>"; };
 		13B07FB61A68108700A75B9A /* Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; name = Info.plist; path = riseVest/Info.plist; sourceTree = "<group>"; };
 		13B07FB71A68108700A75B9A /* main.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = main.m; path = riseVest/main.m; sourceTree = "<group>"; };
-		144807B15A2C923A377684F2 /* libPods-riseVest.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = "libPods-riseVest.a"; sourceTree = BUILT_PRODUCTS_DIR; };
-		28B05AABB7EE221A3E4C4BC0 /* Pods-riseVest-riseVestTests.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-riseVest-riseVestTests.release.xcconfig"; path = "Target Support Files/Pods-riseVest-riseVestTests/Pods-riseVest-riseVestTests.release.xcconfig"; sourceTree = "<group>"; };
-		3EB2C1F67E39E5DD841A195B /* libPods-riseVest-riseVestTests.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = "libPods-riseVest-riseVestTests.a"; sourceTree = BUILT_PRODUCTS_DIR; };
+		1A8B03850963554E7B76D58F /* Pods-riseVest-riseVestTests.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-riseVest-riseVestTests.release.xcconfig"; path = "Target Support Files/Pods-riseVest-riseVestTests/Pods-riseVest-riseVestTests.release.xcconfig"; sourceTree = "<group>"; };
+		21B3AF418BB2558DB718B87D /* Pods-riseVest.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-riseVest.debug.xcconfig"; path = "Target Support Files/Pods-riseVest/Pods-riseVest.debug.xcconfig"; sourceTree = "<group>"; };
+		5E323C4199AC92599A0B25F2 /* libPods-riseVest-riseVestTests.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = "libPods-riseVest-riseVestTests.a"; sourceTree = BUILT_PRODUCTS_DIR; };
 		5E9CAE9E5B9C4C44A93A3E84 /* DMSans-Regular.ttf */ = {isa = PBXFileReference; explicitFileType = undefined; fileEncoding = undefined; includeInIndex = 0; lastKnownFileType = unknown; name = "DMSans-Regular.ttf"; path = "../src/assets/fonts/DMSans-Regular.ttf"; sourceTree = "<group>"; };
-		73F3BCAC6E895052CCCF6B95 /* Pods-riseVest.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-riseVest.debug.xcconfig"; path = "Target Support Files/Pods-riseVest/Pods-riseVest.debug.xcconfig"; sourceTree = "<group>"; };
+		613BDF06704CC0148F90131D /* Pods-riseVest-riseVestTests.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-riseVest-riseVestTests.debug.xcconfig"; path = "Target Support Files/Pods-riseVest-riseVestTests/Pods-riseVest-riseVestTests.debug.xcconfig"; sourceTree = "<group>"; };
 		81AB9BB72411601600AC10FF /* LaunchScreen.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; name = LaunchScreen.storyboard; path = riseVest/LaunchScreen.storyboard; sourceTree = "<group>"; };
-		88B45E2BF7C6F17E4228F661 /* Pods-riseVest-riseVestTests.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-riseVest-riseVestTests.debug.xcconfig"; path = "Target Support Files/Pods-riseVest-riseVestTests/Pods-riseVest-riseVestTests.debug.xcconfig"; sourceTree = "<group>"; };
-		970C54B324124FC2509B432B /* Pods-riseVest.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-riseVest.release.xcconfig"; path = "Target Support Files/Pods-riseVest/Pods-riseVest.release.xcconfig"; sourceTree = "<group>"; };
+		A4E6FB3F4249889287CD48FA /* libPods-riseVest.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = "libPods-riseVest.a"; sourceTree = BUILT_PRODUCTS_DIR; };
 		C5B8EC6442F64AFBB1DD082A /* DMSans-Medium.ttf */ = {isa = PBXFileReference; explicitFileType = undefined; fileEncoding = undefined; includeInIndex = 0; lastKnownFileType = unknown; name = "DMSans-Medium.ttf"; path = "../src/assets/fonts/DMSans-Medium.ttf"; sourceTree = "<group>"; };
 		ED297162215061F000B7C4FE /* JavaScriptCore.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = JavaScriptCore.framework; path = System/Library/Frameworks/JavaScriptCore.framework; sourceTree = SDKROOT; };
 		EDAE6492790F45D288277786 /* DMSans-Bold.ttf */ = {isa = PBXFileReference; explicitFileType = undefined; fileEncoding = undefined; includeInIndex = 0; lastKnownFileType = unknown; name = "DMSans-Bold.ttf"; path = "../src/assets/fonts/DMSans-Bold.ttf"; sourceTree = "<group>"; };
@@ -57,7 +57,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				FAD09014E6B199EB2AA6DE79 /* libPods-riseVest-riseVestTests.a in Frameworks */,
+				000BEE5E2A6CA4D4830ECFF0 /* libPods-riseVest-riseVestTests.a in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -65,7 +65,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				C2308BE660518F789CD35C2F /* libPods-riseVest.a in Frameworks */,
+				BBC535094F37BAD5AC5A4D16 /* libPods-riseVest.a in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -117,8 +117,8 @@
 			isa = PBXGroup;
 			children = (
 				ED297162215061F000B7C4FE /* JavaScriptCore.framework */,
-				144807B15A2C923A377684F2 /* libPods-riseVest.a */,
-				3EB2C1F67E39E5DD841A195B /* libPods-riseVest-riseVestTests.a */,
+				A4E6FB3F4249889287CD48FA /* libPods-riseVest.a */,
+				5E323C4199AC92599A0B25F2 /* libPods-riseVest-riseVestTests.a */,
 			);
 			name = Frameworks;
 			sourceTree = "<group>";
@@ -158,10 +158,10 @@
 		BBD78D7AC51CEA395F1C20DB /* Pods */ = {
 			isa = PBXGroup;
 			children = (
-				73F3BCAC6E895052CCCF6B95 /* Pods-riseVest.debug.xcconfig */,
-				970C54B324124FC2509B432B /* Pods-riseVest.release.xcconfig */,
-				88B45E2BF7C6F17E4228F661 /* Pods-riseVest-riseVestTests.debug.xcconfig */,
-				28B05AABB7EE221A3E4C4BC0 /* Pods-riseVest-riseVestTests.release.xcconfig */,
+				21B3AF418BB2558DB718B87D /* Pods-riseVest.debug.xcconfig */,
+				06D0CA1229E548CBA18D73D3 /* Pods-riseVest.release.xcconfig */,
+				613BDF06704CC0148F90131D /* Pods-riseVest-riseVestTests.debug.xcconfig */,
+				1A8B03850963554E7B76D58F /* Pods-riseVest-riseVestTests.release.xcconfig */,
 			);
 			path = Pods;
 			sourceTree = "<group>";
@@ -173,12 +173,12 @@
 			isa = PBXNativeTarget;
 			buildConfigurationList = 00E357021AD99517003FC87E /* Build configuration list for PBXNativeTarget "riseVestTests" */;
 			buildPhases = (
-				5435026C33BDBD26CC900229 /* [CP] Check Pods Manifest.lock */,
+				F061FFF6033F7AC302B4B127 /* [CP] Check Pods Manifest.lock */,
 				00E356EA1AD99517003FC87E /* Sources */,
 				00E356EB1AD99517003FC87E /* Frameworks */,
 				00E356EC1AD99517003FC87E /* Resources */,
-				D261B5FAC678B508F75156F5 /* [CP] Embed Pods Frameworks */,
-				E886F8F170C4753B770722F0 /* [CP] Copy Pods Resources */,
+				AE7E764E230ED5DE06508A0C /* [CP] Embed Pods Frameworks */,
+				7CBFA76D2CA6DAED9EFA2FA6 /* [CP] Copy Pods Resources */,
 			);
 			buildRules = (
 			);
@@ -194,14 +194,14 @@
 			isa = PBXNativeTarget;
 			buildConfigurationList = 13B07F931A680F5B00A75B9A /* Build configuration list for PBXNativeTarget "riseVest" */;
 			buildPhases = (
-				B3CE13184FDE079493B4A075 /* [CP] Check Pods Manifest.lock */,
+				87F176BDFE6131472A81222C /* [CP] Check Pods Manifest.lock */,
 				FD10A7F022414F080027D42C /* Start Packager */,
 				13B07F871A680F5B00A75B9A /* Sources */,
 				13B07F8C1A680F5B00A75B9A /* Frameworks */,
 				13B07F8E1A680F5B00A75B9A /* Resources */,
 				00DD1BFF1BD5951E006B06BC /* Bundle React Native code and images */,
-				16E4F570BFF4A08AD5128F1A /* [CP] Embed Pods Frameworks */,
-				F01888A00534366A091B21D5 /* [CP] Copy Pods Resources */,
+				FB5BB7015EE759919FE1C2D6 /* [CP] Embed Pods Frameworks */,
+				82470344865C1F839F202773 /* [CP] Copy Pods Resources */,
 			);
 			buildRules = (
 			);
@@ -287,46 +287,41 @@
 			shellPath = /bin/sh;
 			shellScript = "set -e\n\nWITH_ENVIRONMENT=\"../node_modules/react-native/scripts/xcode/with-environment.sh\"\nREACT_NATIVE_XCODE=\"../node_modules/react-native/scripts/react-native-xcode.sh\"\n\n/bin/sh -c \"$WITH_ENVIRONMENT $REACT_NATIVE_XCODE\"\n";
 		};
-		16E4F570BFF4A08AD5128F1A /* [CP] Embed Pods Frameworks */ = {
+		7CBFA76D2CA6DAED9EFA2FA6 /* [CP] Copy Pods Resources */ = {
 			isa = PBXShellScriptBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
 			);
 			inputFileListPaths = (
-				"${PODS_ROOT}/Target Support Files/Pods-riseVest/Pods-riseVest-frameworks-${CONFIGURATION}-input-files.xcfilelist",
+				"${PODS_ROOT}/Target Support Files/Pods-riseVest-riseVestTests/Pods-riseVest-riseVestTests-resources-${CONFIGURATION}-input-files.xcfilelist",
 			);
-			name = "[CP] Embed Pods Frameworks";
+			name = "[CP] Copy Pods Resources";
 			outputFileListPaths = (
-				"${PODS_ROOT}/Target Support Files/Pods-riseVest/Pods-riseVest-frameworks-${CONFIGURATION}-output-files.xcfilelist",
+				"${PODS_ROOT}/Target Support Files/Pods-riseVest-riseVestTests/Pods-riseVest-riseVestTests-resources-${CONFIGURATION}-output-files.xcfilelist",
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 			shellPath = /bin/sh;
-			shellScript = "\"${PODS_ROOT}/Target Support Files/Pods-riseVest/Pods-riseVest-frameworks.sh\"\n";
+			shellScript = "\"${PODS_ROOT}/Target Support Files/Pods-riseVest-riseVestTests/Pods-riseVest-riseVestTests-resources.sh\"\n";
 			showEnvVarsInLog = 0;
 		};
-		5435026C33BDBD26CC900229 /* [CP] Check Pods Manifest.lock */ = {
+		82470344865C1F839F202773 /* [CP] Copy Pods Resources */ = {
 			isa = PBXShellScriptBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
 			);
 			inputFileListPaths = (
+				"${PODS_ROOT}/Target Support Files/Pods-riseVest/Pods-riseVest-resources-${CONFIGURATION}-input-files.xcfilelist",
 			);
-			inputPaths = (
-				"${PODS_PODFILE_DIR_PATH}/Podfile.lock",
-				"${PODS_ROOT}/Manifest.lock",
-			);
-			name = "[CP] Check Pods Manifest.lock";
+			name = "[CP] Copy Pods Resources";
 			outputFileListPaths = (
-			);
-			outputPaths = (
-				"$(DERIVED_FILE_DIR)/Pods-riseVest-riseVestTests-checkManifestLockResult.txt",
+				"${PODS_ROOT}/Target Support Files/Pods-riseVest/Pods-riseVest-resources-${CONFIGURATION}-output-files.xcfilelist",
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 			shellPath = /bin/sh;
-			shellScript = "diff \"${PODS_PODFILE_DIR_PATH}/Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [ $? != 0 ] ; then\n    # print error to STDERR\n    echo \"error: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\" >&2\n    exit 1\nfi\n# This output is used by Xcode 'outputs' to avoid re-running this script phase.\necho \"SUCCESS\" > \"${SCRIPT_OUTPUT_FILE_0}\"\n";
+			shellScript = "\"${PODS_ROOT}/Target Support Files/Pods-riseVest/Pods-riseVest-resources.sh\"\n";
 			showEnvVarsInLog = 0;
 		};
-		B3CE13184FDE079493B4A075 /* [CP] Check Pods Manifest.lock */ = {
+		87F176BDFE6131472A81222C /* [CP] Check Pods Manifest.lock */ = {
 			isa = PBXShellScriptBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
@@ -348,7 +343,7 @@
 			shellScript = "diff \"${PODS_PODFILE_DIR_PATH}/Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [ $? != 0 ] ; then\n    # print error to STDERR\n    echo \"error: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\" >&2\n    exit 1\nfi\n# This output is used by Xcode 'outputs' to avoid re-running this script phase.\necho \"SUCCESS\" > \"${SCRIPT_OUTPUT_FILE_0}\"\n";
 			showEnvVarsInLog = 0;
 		};
-		D261B5FAC678B508F75156F5 /* [CP] Embed Pods Frameworks */ = {
+		AE7E764E230ED5DE06508A0C /* [CP] Embed Pods Frameworks */ = {
 			isa = PBXShellScriptBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
@@ -365,38 +360,43 @@
 			shellScript = "\"${PODS_ROOT}/Target Support Files/Pods-riseVest-riseVestTests/Pods-riseVest-riseVestTests-frameworks.sh\"\n";
 			showEnvVarsInLog = 0;
 		};
-		E886F8F170C4753B770722F0 /* [CP] Copy Pods Resources */ = {
+		F061FFF6033F7AC302B4B127 /* [CP] Check Pods Manifest.lock */ = {
 			isa = PBXShellScriptBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
 			);
 			inputFileListPaths = (
-				"${PODS_ROOT}/Target Support Files/Pods-riseVest-riseVestTests/Pods-riseVest-riseVestTests-resources-${CONFIGURATION}-input-files.xcfilelist",
 			);
-			name = "[CP] Copy Pods Resources";
+			inputPaths = (
+				"${PODS_PODFILE_DIR_PATH}/Podfile.lock",
+				"${PODS_ROOT}/Manifest.lock",
+			);
+			name = "[CP] Check Pods Manifest.lock";
 			outputFileListPaths = (
-				"${PODS_ROOT}/Target Support Files/Pods-riseVest-riseVestTests/Pods-riseVest-riseVestTests-resources-${CONFIGURATION}-output-files.xcfilelist",
+			);
+			outputPaths = (
+				"$(DERIVED_FILE_DIR)/Pods-riseVest-riseVestTests-checkManifestLockResult.txt",
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 			shellPath = /bin/sh;
-			shellScript = "\"${PODS_ROOT}/Target Support Files/Pods-riseVest-riseVestTests/Pods-riseVest-riseVestTests-resources.sh\"\n";
+			shellScript = "diff \"${PODS_PODFILE_DIR_PATH}/Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [ $? != 0 ] ; then\n    # print error to STDERR\n    echo \"error: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\" >&2\n    exit 1\nfi\n# This output is used by Xcode 'outputs' to avoid re-running this script phase.\necho \"SUCCESS\" > \"${SCRIPT_OUTPUT_FILE_0}\"\n";
 			showEnvVarsInLog = 0;
 		};
-		F01888A00534366A091B21D5 /* [CP] Copy Pods Resources */ = {
+		FB5BB7015EE759919FE1C2D6 /* [CP] Embed Pods Frameworks */ = {
 			isa = PBXShellScriptBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
 			);
 			inputFileListPaths = (
-				"${PODS_ROOT}/Target Support Files/Pods-riseVest/Pods-riseVest-resources-${CONFIGURATION}-input-files.xcfilelist",
+				"${PODS_ROOT}/Target Support Files/Pods-riseVest/Pods-riseVest-frameworks-${CONFIGURATION}-input-files.xcfilelist",
 			);
-			name = "[CP] Copy Pods Resources";
+			name = "[CP] Embed Pods Frameworks";
 			outputFileListPaths = (
-				"${PODS_ROOT}/Target Support Files/Pods-riseVest/Pods-riseVest-resources-${CONFIGURATION}-output-files.xcfilelist",
+				"${PODS_ROOT}/Target Support Files/Pods-riseVest/Pods-riseVest-frameworks-${CONFIGURATION}-output-files.xcfilelist",
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 			shellPath = /bin/sh;
-			shellScript = "\"${PODS_ROOT}/Target Support Files/Pods-riseVest/Pods-riseVest-resources.sh\"\n";
+			shellScript = "\"${PODS_ROOT}/Target Support Files/Pods-riseVest/Pods-riseVest-frameworks.sh\"\n";
 			showEnvVarsInLog = 0;
 		};
 		FD10A7F022414F080027D42C /* Start Packager */ = {
@@ -451,7 +451,7 @@
 /* Begin XCBuildConfiguration section */
 		00E356F61AD99517003FC87E /* Debug */ = {
 			isa = XCBuildConfiguration;
-			baseConfigurationReference = 88B45E2BF7C6F17E4228F661 /* Pods-riseVest-riseVestTests.debug.xcconfig */;
+			baseConfigurationReference = 613BDF06704CC0148F90131D /* Pods-riseVest-riseVestTests.debug.xcconfig */;
 			buildSettings = {
 				BUNDLE_LOADER = "$(TEST_HOST)";
 				GCC_PREPROCESSOR_DEFINITIONS = (
@@ -478,7 +478,7 @@
 		};
 		00E356F71AD99517003FC87E /* Release */ = {
 			isa = XCBuildConfiguration;
-			baseConfigurationReference = 28B05AABB7EE221A3E4C4BC0 /* Pods-riseVest-riseVestTests.release.xcconfig */;
+			baseConfigurationReference = 1A8B03850963554E7B76D58F /* Pods-riseVest-riseVestTests.release.xcconfig */;
 			buildSettings = {
 				BUNDLE_LOADER = "$(TEST_HOST)";
 				COPY_PHASE_STRIP = NO;
@@ -502,7 +502,7 @@
 		};
 		13B07F941A680F5B00A75B9A /* Debug */ = {
 			isa = XCBuildConfiguration;
-			baseConfigurationReference = 73F3BCAC6E895052CCCF6B95 /* Pods-riseVest.debug.xcconfig */;
+			baseConfigurationReference = 21B3AF418BB2558DB718B87D /* Pods-riseVest.debug.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CLANG_ENABLE_MODULES = YES;
@@ -529,7 +529,7 @@
 		};
 		13B07F951A680F5B00A75B9A /* Release */ = {
 			isa = XCBuildConfiguration;
-			baseConfigurationReference = 970C54B324124FC2509B432B /* Pods-riseVest.release.xcconfig */;
+			baseConfigurationReference = 06D0CA1229E548CBA18D73D3 /* Pods-riseVest.release.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CLANG_ENABLE_MODULES = YES;

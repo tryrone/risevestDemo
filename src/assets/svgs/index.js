@@ -28,6 +28,12 @@ import CartIcon from './cart.svg';
 import BigQuestionIcon from './big_question.svg';
 import BigCalenderIcon from './big_calender.svg';
 import BigSettingsIcon from './big_settings.svg';
+import InfoIcon from './info.svg';
+import PlanBackIcon from './plan_back_icon.svg';
+import PlanBurgerIcon from './plan_burger_icon.svg';
+import QuestionInfoIcon from './question_icon.svg';
+import CreditIcon from './credit_icon.svg';
+import DebitIcon from './debit_icon.svg';
 
 export {
   ActivePassword,
@@ -60,4 +66,10 @@ export {
   BigCalenderIcon,
   BigQuestionIcon,
   BigSettingsIcon,
+  InfoIcon,
+  PlanBackIcon,
+  PlanBurgerIcon,
+  QuestionInfoIcon,
+  CreditIcon,
+  DebitIcon,
 };

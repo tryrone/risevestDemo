@@ -9,6 +9,8 @@ import {
   CREATE_PIN,
   CREATE_PLAN_STEPS,
   ONBOARDING,
+  PLAN_DETAIL,
+  PLAN_REVIEW,
   SIGN_IN,
   SIGN_UP,
   SUCCESS_PAGE,
@@ -23,13 +25,15 @@ import ConfirmPin from '../pages/CreatePin/confirmPin';
 import BottomNavigation from '../pages/BottomNavigation';
 import CreatePlan from '../pages/CreatePlan';
 import PlanSteps from '../pages/CreatePlan/PlanSteps';
+import PlanReview from '../pages/CreatePlan/PlanReview';
+import Plan from '../pages/Plan';
 
 const NavigationComponent = () => {
   const Stack = createStackNavigator();
   return (
     <NavigationContainer>
       <Stack.Navigator
-        initialRouteName={BOTTOM_NAV}
+        initialRouteName={ONBOARDING}
         screenOptions={{headerShown: false}}>
         <Stack.Screen name={ONBOARDING} component={Onboarding} />
         <Stack.Screen name={SIGN_UP} component={SignUp} />
@@ -41,6 +45,8 @@ const NavigationComponent = () => {
         <Stack.Screen name={BOTTOM_NAV} component={BottomNavigation} />
         <Stack.Screen name={CREATE_A_PLAN} component={CreatePlan} />
         <Stack.Screen name={CREATE_PLAN_STEPS} component={PlanSteps} />
+        <Stack.Screen name={PLAN_REVIEW} component={PlanReview} />
+        <Stack.Screen name={PLAN_DETAIL} component={Plan} />
       </Stack.Navigator>
     </NavigationContainer>
   );

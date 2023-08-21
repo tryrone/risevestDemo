@@ -13,6 +13,7 @@ export default {
   orange: '#FE7122',
   pink: '#B80074',
   grey: '#71879C1A',
+  grey_1: '#71879C',
   grey_2: '#71879C',
   border: '#E1E8ED',
   placeholderColor: '#292F33',

@@ -4,9 +4,13 @@ import styled from 'styled-components/native';
 import Colors from '../../../../constants/Colors';
 import {rainbow} from '../../../../assets/images';
 
-const ImageBackgroundCard = styled.ImageBackground<{bgColor?: string}>`
+const ImageBackgroundCard = styled.ImageBackground<{
+  bgColor?: string;
+  heightPercent?: number;
+}>`
   flex: 1;
   background-color: ${({bgColor}) => bgColor || Colors?.white};
+  height: ${({heightPercent}) => heightPercent || 100}%;
 `;
 
 type SafeAreaProp = {
@@ -16,6 +20,8 @@ type SafeAreaProp = {
   height?: string;
   width?: string;
   safeAreaBg?: string;
+  bgImage?: number;
+  safeAreaBgPercent?: number;
 };
 
 const CardSafeAreaWrap = ({
@@ -25,11 +31,14 @@ const CardSafeAreaWrap = ({
   height = '100%',
   width = '100%',
   safeAreaBg = Colors.white,
+  bgImage = rainbow,
+  safeAreaBgPercent = 100,
 }: SafeAreaProp): JSX.Element => {
   return (
     <ImageBackgroundCard
       bgColor={safeAreaBg}
-      source={rainbow}
+      source={bgImage}
+      heightPercent={safeAreaBgPercent}
       resizeMode="stretch">
       <SafeAreaView
         style={{

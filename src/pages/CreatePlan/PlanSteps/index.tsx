@@ -5,8 +5,8 @@ import {ScreenDefaultProps} from '../../../navigation/nativationType';
 import CustomText from '../../../components/CustomText';
 import Colors from '../../../constants/Colors';
 import styled from 'styled-components/native';
-import PlanName from './PlanName';
-import PlanAmount from './PlanAmount';
+// import PlanName from './PlanName';
+// import PlanAmount from './PlanAmount';
 import PlanWithdrawalDate from './PlanWithdrawalDate';
 
 const ProgressWrap = styled.View`
@@ -47,7 +47,7 @@ const PlanSteps = ({navigation}: ScreenDefaultProps) => {
 
       {/* <PlanName /> */}
       {/* <PlanAmount /> */}
-      <PlanWithdrawalDate />
+      <PlanWithdrawalDate navigation={navigation} />
     </SafeAreaWrap>
   );
 };
