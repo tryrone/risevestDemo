@@ -630,7 +630,7 @@ export const CalendarInput = ({
         onConfirm={(dateVal: any): any => {
           setOpen(false);
           setDate(dateVal);
-          handleChange(name, moment(dateVal).format('YYYY-MM-DD'));
+          handleChange(moment(dateVal).format('YYYY-MM-DD'));
         }}
         onCancel={() => {
           setOpen(false);

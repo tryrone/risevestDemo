@@ -81,7 +81,12 @@ const Onboarding = ({navigation}: ScreenDefaultProps) => {
     if (activeIndex !== ONBOARDING_DATA.length - 1) {
       return (
         <Row>
-          <ButtonWrap onPress={() => scrollToIndex(activeIndex - 1)}>
+          <ButtonWrap
+            onPress={() => {
+              if (activeIndex !== 0) {
+                scrollToIndex(activeIndex - 1);
+              }
+            }}>
             <BackArrow
               style={{
                 color:
