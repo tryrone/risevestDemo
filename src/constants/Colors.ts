@@ -1,6 +1,7 @@
 export default {
   primary: '#0898A0',
   secondary: '#41BCC4',
+  teal: '#A096EE',
   white: '#FFFFFF',
   white_2: 'rgba(246, 245, 250, 0.09)',
   black: '#000000',
@@ -23,4 +24,6 @@ export default {
   grey_arrow: 'rgba(148, 161, 173, 1)',
   inactiveIcon: '#94A1AD',
   green: '#27BF41',
+  orange_2: '#FE8A77',
+  dark_teal: '#9586F2',
 };

@@ -34,6 +34,7 @@ import PlanBurgerIcon from './plan_burger_icon.svg';
 import QuestionInfoIcon from './question_icon.svg';
 import CreditIcon from './credit_icon.svg';
 import DebitIcon from './debit_icon.svg';
+import WhiteArrowRightSvg from './white_arrow_right.svg';
 
 export {
   ActivePassword,
@@ -72,4 +73,5 @@ export {
   QuestionInfoIcon,
   CreditIcon,
   DebitIcon,
+  WhiteArrowRightSvg,
 };

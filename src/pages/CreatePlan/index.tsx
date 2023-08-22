@@ -55,7 +55,7 @@ const DetailItem = ({icon, text, title, mt}: DetailItemProps) => {
 
 const CreatePlan = ({navigation}: ScreenDefaultProps) => {
   return (
-    <SafeAreaWrap style={{paddingTop: 20, paddingHorizontal: 20}}>
+    <SafeAreaWrap style={{paddingHorizontal: 20}}>
       <PageHeader navigation={navigation} title="Create a plan" />
       <CustomText
         top={5}

@@ -4,7 +4,7 @@ import styled from 'styled-components/native';
 import CustomText from '../../../../components/CustomText';
 import Colors from '../../../../constants/Colors';
 import {ChevRightIcon, PlusBtnIcon} from '../../../../assets/svgs';
-import {CREATE_A_PLAN} from '../../../../navigation/constants';
+import {CREATE_A_PLAN, PLANS_LIST} from '../../../../navigation/constants';
 import {ScreenDefaultProps} from '../../../../navigation/nativationType';
 
 interface CreatePlanBoxProps {
@@ -18,7 +18,7 @@ const SpacedRow = styled.View`
   margin-top: 31px;
 `;
 
-const Row = styled.View`
+const Row = styled.TouchableOpacity`
   flex-direction: row;
   align-items: center;
 `;
@@ -57,7 +57,7 @@ const CreatePlan = ({navigation}: ScreenDefaultProps) => {
           Create a plan
         </CustomText>
 
-        <Row>
+        <Row onPress={() => navigation.navigate(PLANS_LIST)}>
           <CustomText
             color={Colors.inactiveIcon}
             fontSize={15}

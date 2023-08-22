@@ -10,3 +10,4 @@ export const CREATE_A_PLAN = 'CREATE_A_PLAN';
 export const CREATE_PLAN_STEPS = 'CREATE_PLAN_STEPS';
 export const PLAN_REVIEW = 'PLAN_REVIEW';
 export const PLAN_DETAIL = 'PLAN_DETAIL';
+export const PLANS_LIST = 'PLANS_LIST';
