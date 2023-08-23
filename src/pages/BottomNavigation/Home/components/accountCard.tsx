@@ -7,6 +7,7 @@ import {ExpandingDot} from 'react-native-animated-pagination-dots';
 import {ONBOARDING_DATA} from '../../../../constants';
 import LinearGradient from 'react-native-linear-gradient';
 import {Animated} from 'react-native';
+import {AccountCardType} from 'utils/types';
 
 const CardWrap = styled.View`
   border-width: 1px;
@@ -30,7 +31,7 @@ const Line = styled.View`
   width: 50%;
 `;
 
-const AccountCard = () => {
+const AccountCard = ({balance, returns}: AccountCardType) => {
   const scrollX = React.useRef(new Animated.Value(0)).current;
   return (
     <LinearGradient
@@ -53,7 +54,7 @@ const AccountCard = () => {
           top={5}
           fontWeight="400"
           color={Colors.black_3}>
-          $0.00
+          ${Number(balance).toFixed(2) || 0.0}
         </CustomText>
 
         <Line />
@@ -68,7 +69,7 @@ const AccountCard = () => {
             right={4}
             fontWeight="400"
             color={Colors.green}>
-            0.00%
+            {Number(returns).toFixed(2) || 0.0}%
           </CustomText>
           <ChevRightIcon />
         </Row>

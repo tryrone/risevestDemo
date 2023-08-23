@@ -12,6 +12,7 @@ import PlanBalance from './PlanBalance';
 import PerformanceChart from './PerformanceChart';
 import EarningsData from './EarningsData';
 import RecentTransactions from './RecentTransactions';
+import {BOTTOM_NAV} from 'navigation/constants';
 
 interface PlanHeaderProps {
   goBack: () => void;
@@ -73,7 +74,7 @@ const PlanHeader = ({goBack}: PlanHeaderProps) => {
 
 const Plan = ({navigation}: ScreenDefaultProps) => {
   const goBack = () => {
-    navigation.goBack();
+    navigation?.navigate(BOTTOM_NAV);
   };
   return (
     <CardSafeAreaWrap

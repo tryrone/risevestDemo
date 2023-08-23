@@ -12,6 +12,8 @@ import {ScrollView} from 'react-native';
 import ContactUs from './components/contactUs';
 import QuoteCard from './components/quoteCard';
 import {ScreenDefaultProps} from '../../../navigation/nativationType';
+import {useGetUserSessionQuery} from 'rtk/services/user/userApi';
+import {SessionData} from 'utils/types';
 
 const RainbowWrap = styled.Image`
   width: 100%;
@@ -27,14 +29,23 @@ const PaddedView = styled.View`
   padding-bottom: 40px;
 `;
 
-const Home = ({navigation}: ScreenDefaultProps) => {
+const Home = ({navigation, route}: ScreenDefaultProps) => {
+  const info = route?.params?.data;
+
+  const {data} = useGetUserSessionQuery({});
+
+  const sessionData: SessionData | undefined = info || data;
+
   return (
     <CardSafeAreaWrap safeAreaBg={Colors?.white} bg={Colors.white}>
       <RainbowWrap source={rainbow} resizeMode="stretch" />
       <PaddedView>
-        <HeaderComponent />
+        <HeaderComponent userName={sessionData?.first_name} />
         <ScrollView showsVerticalScrollIndicator={false}>
-          <AccountCard />
+          <AccountCard
+            balance={sessionData?.total_balance}
+            returns={sessionData?.total_returns}
+          />
           <Button
             text="Add money"
             bgColor={Colors.white}

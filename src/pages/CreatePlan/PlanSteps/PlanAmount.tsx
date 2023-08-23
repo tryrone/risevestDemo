@@ -1,11 +1,16 @@
 import {View} from 'react-native';
-import React from 'react';
+import React, {useContext} from 'react';
 import CustomText from '../../../components/CustomText';
 import TextInput from '../../../components/TextInput';
 import Button from '../../../components/Button';
 import Colors from '../../../constants/Colors';
+import {CreatePlanContextType, PlanAmountComponentType} from 'utils/types';
+import {CreatePlanContext} from 'context/createPlanContext';
+import {commaFormat} from 'utils/helperFunctions';
 
-const PlanAmount = () => {
+const PlanAmount = ({next}: PlanAmountComponentType) => {
+  const context = useContext<CreatePlanContextType>(CreatePlanContext);
+  const {planForm, setPlanForm} = context;
   return (
     <View>
       <CustomText fontSize={17} fontWeight="700">
@@ -13,9 +18,13 @@ const PlanAmount = () => {
       </CustomText>
 
       <TextInput
+        returnValue
         showNaira
-        value=""
-        placeholder="Investments"
+        value={planForm.amount}
+        handleChange={(e: string) => {
+          setPlanForm({...planForm, amount: commaFormat(e)});
+        }}
+        placeholder="Amount"
         inputType="numeric"
       />
 
@@ -26,7 +35,10 @@ const PlanAmount = () => {
         textSize={15}
         style={{marginTop: 25}}
         bgColor={Colors.primary}
-        onPress={() => {}}
+        disabled={planForm.amount === ''}
+        onPress={() => {
+          next();
+        }}
       />
     </View>
   );

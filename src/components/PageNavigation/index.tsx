@@ -7,6 +7,8 @@ import CustomText from '../CustomText';
 
 interface PageHeaderProps extends ScreenDefaultProps {
   title: string;
+  useCustomBack?: boolean;
+  goBack?: () => void;
 }
 
 const SpacedRow = styled.View`
@@ -21,10 +23,18 @@ const Box = styled.View`
   width: 50px;
 `;
 
-const PageHeader = ({navigation, title}: PageHeaderProps) => {
+const PageHeader = ({
+  navigation,
+  title,
+  goBack,
+  useCustomBack,
+}: PageHeaderProps) => {
   return (
     <SpacedRow>
-      <TouchableOpacity onPress={() => navigation.goBack()}>
+      <TouchableOpacity
+        onPress={() =>
+          useCustomBack ? goBack && goBack() : navigation.goBack()
+        }>
         <BackBtnSvg />
       </TouchableOpacity>
 

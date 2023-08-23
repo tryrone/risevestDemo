@@ -9,7 +9,13 @@ import {ScrollView, View} from 'react-native';
 import PlanChart from './PlanChart';
 import {InfoIcon} from '../../../assets/svgs';
 import Button from '../../../components/Button';
-import {PLAN_DETAIL, SUCCESS_PAGE} from '../../../navigation/constants';
+import {
+  CREATE_A_PLAN,
+  PLAN_DETAIL,
+  SUCCESS_PAGE,
+} from '../../../navigation/constants';
+import {PlanItemType} from 'utils/types';
+import {commaFormat} from 'utils/helperFunctions';
 
 const SpacedRow = styled.View`
   flex-direction: row;
@@ -66,7 +72,7 @@ const RickInfo = () => {
   );
 };
 
-const ReviewHeader = () => {
+const ReviewHeader = ({data}: any) => {
   return (
     <View>
       <CustomText
@@ -75,7 +81,7 @@ const ReviewHeader = () => {
         fontWeight="400"
         align="center"
         color={Colors.grey_2}>
-        Kate Ventures
+        {data?.plan_name}
       </CustomText>
       <CustomText
         fontSize={24}
@@ -83,7 +89,7 @@ const ReviewHeader = () => {
         fontWeight="700"
         align="center"
         color={Colors.black}>
-        $10,930.75
+        ${commaFormat(data?.target_amount ? `${data?.target_amount}` : '0')}
       </CustomText>
       <CustomText
         fontSize={15}
@@ -91,18 +97,25 @@ const ReviewHeader = () => {
         fontWeight="400"
         align="center"
         color={Colors.black_4}>
-        by 20 June 2021
+        by{' '}
+        {new Date(data?.maturity_date).toLocaleDateString('en-US', {
+          month: 'short',
+          day: 'numeric',
+          year: 'numeric',
+        })}
       </CustomText>
     </View>
   );
 };
 
-const PlanReview = ({navigation}: ScreenDefaultProps) => {
+const PlanReview = ({navigation, route}: ScreenDefaultProps) => {
+  const info: PlanItemType | undefined = route?.params?.params?.data;
+
   return (
     <SafeAreaWrap style={{paddingHorizontal: 20}}>
       <PageHeader navigation={navigation} title="Review" />
       <ScrollView showsVerticalScrollIndicator={false}>
-        <ReviewHeader />
+        <ReviewHeader data={info} />
 
         <SpacedRow>
           <Row>
@@ -112,7 +125,10 @@ const PlanReview = ({navigation}: ScreenDefaultProps) => {
               left={6}
               fontSize={12}
               fontWeight="400">
-              Investments • $50,400
+              Investments • $
+              {commaFormat(
+                info?.target_amount ? `${info?.target_amount}` : '0',
+              )}
             </CustomText>
           </Row>
           <Row>
@@ -122,7 +138,10 @@ const PlanReview = ({navigation}: ScreenDefaultProps) => {
               left={6}
               fontSize={12}
               fontWeight="400">
-              Returns • $20,803
+              Returns • ${' '}
+              {commaFormat(
+                info?.total_returns ? `${info?.total_returns}` : '0',
+              )}
             </CustomText>
           </Row>
         </SpacedRow>
@@ -134,7 +153,7 @@ const PlanReview = ({navigation}: ScreenDefaultProps) => {
             Estimated monthly investment
           </CustomText>
           <CustomText fontSize={14} fontWeight="400" color={Colors.black_4}>
-            $120
+            ${commaFormat('0')}
           </CustomText>
         </SpacedBetween>
 
@@ -157,11 +176,19 @@ const PlanReview = ({navigation}: ScreenDefaultProps) => {
           style={{marginTop: 47}}
           bgColor={Colors.primary}
           onPress={() =>
-            navigation.navigate(SUCCESS_PAGE, {
-              title: 'You just created  \n your plan.',
-              body: 'Well done, Deborah',
-              btnText: 'View plan',
-              navigateTo: PLAN_DETAIL,
+            navigation.reset({
+              index: 0,
+              routes: [
+                {
+                  name: SUCCESS_PAGE,
+                  params: {
+                    title: 'You just created  \n your plan.',
+                    body: 'Well done',
+                    btnText: 'View plan',
+                    navigateTo: PLAN_DETAIL,
+                  },
+                },
+              ],
             })
           }
         />
@@ -172,7 +199,7 @@ const PlanReview = ({navigation}: ScreenDefaultProps) => {
           textSize={15}
           style={{marginTop: 10, marginBottom: 30}}
           bgColor={Colors.grey}
-          // onPress={() => navigation.navigate(BOTTOM_NAV)}
+          onPress={() => navigation.navigate(CREATE_A_PLAN)}
         />
       </ScrollView>
     </SafeAreaWrap>

@@ -623,7 +623,7 @@ export const CalendarInput = ({
       <DatePicker
         modal
         mode="date"
-        maximumDate={new Date(moment().subtract(18, 'years').toDate())}
+        // maximumDate={new Date(moment().add(18, 'years').toDate())}
         minimumDate={new Date(1900, 1, 1)}
         open={open}
         date={date}

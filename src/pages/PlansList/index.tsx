@@ -10,8 +10,8 @@ import {WhiteArrowRightSvg} from '../../assets/svgs';
 import {PLAN_DETAIL} from '../../navigation/constants';
 
 interface PlanItemProps {
-  title: string;
-  amount: string;
+  title?: string;
+  amount?: string | number;
   bgColor: string;
   onPress: () => void;
 }
@@ -44,7 +44,7 @@ const RowWrap = styled.View`
   flex-wrap: wrap;
 `;
 
-const PlanItem = ({title, bgColor, amount, onPress}: PlanItemProps) => {
+export const PlanItem = ({title, bgColor, amount, onPress}: PlanItemProps) => {
   return (
     <PlanItemWrap bgColor={bgColor} onPress={onPress}>
       <FloatingView>

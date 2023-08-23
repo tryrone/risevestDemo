@@ -15,6 +15,7 @@ module.exports = {
           rtk: './src/rtk',
           assets: './src/assets',
           schemas: './src/schemas',
+          context: './src/context',
         },
       },
     ],

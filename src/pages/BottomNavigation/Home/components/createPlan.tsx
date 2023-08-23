@@ -1,13 +1,27 @@
-import {View} from 'react-native';
+import {ScrollView, View} from 'react-native';
 import React from 'react';
 import styled from 'styled-components/native';
 import CustomText from '../../../../components/CustomText';
 import Colors from '../../../../constants/Colors';
-import {ChevRightIcon, PlusBtnIcon} from '../../../../assets/svgs';
-import {CREATE_A_PLAN, PLANS_LIST} from '../../../../navigation/constants';
+import {ChevRightIcon, PlusBtnIcon, WhiteArrowRightSvg} from 'assets/svgs';
+import {
+  CREATE_A_PLAN,
+  PLANS_LIST,
+  PLAN_DETAIL,
+} from '../../../../navigation/constants';
 import {ScreenDefaultProps} from '../../../../navigation/nativationType';
+import {useGetUserPlansQuery} from 'rtk/services/user/userApi';
+import {PlanItemType} from 'utils/types';
+import {formatCurrency} from 'utils/helperFunctions';
 
 interface CreatePlanBoxProps {
+  onPress: () => void;
+}
+
+interface PlanItemProps {
+  title?: string;
+  amount?: string | number;
+  bgColor: string;
   onPress: () => void;
 }
 
@@ -32,6 +46,52 @@ const CreatePlanWrap = styled.TouchableOpacity`
   align-items: center;
 `;
 
+const PlanItemWrap = styled.TouchableOpacity<{bgColor: string}>`
+  width: 188px;
+  height: 243px;
+  border-radius: 15px;
+  padding: 13px;
+  background-color: ${props => props.bgColor || Colors.white};
+  position: relative;
+  margin-left: 13px;
+`;
+
+const FloatingView = styled.View`
+  position: absolute;
+  bottom: 13px;
+  align-self: center;
+  width: 100%;
+  flex-direction: row;
+  justify-content: space-between;
+  align-items: center;
+`;
+
+const PlanItem = ({title, bgColor, amount, onPress}: PlanItemProps) => {
+  return (
+    <PlanItemWrap bgColor={bgColor} onPress={onPress}>
+      <FloatingView>
+        <View>
+          <CustomText
+            fontSize={15}
+            align="left"
+            fontWeight="400"
+            color={Colors.white}>
+            {title}
+          </CustomText>
+          <CustomText
+            fontSize={18}
+            align="left"
+            fontWeight="400"
+            color={Colors.white}>
+            {formatCurrency(amount)}
+          </CustomText>
+        </View>
+        <WhiteArrowRightSvg />
+      </FloatingView>
+    </PlanItemWrap>
+  );
+};
+
 const CreatePlanBox = ({onPress}: CreatePlanBoxProps): JSX.Element => {
   return (
     <CreatePlanWrap onPress={onPress}>
@@ -50,6 +110,18 @@ const CreatePlanBox = ({onPress}: CreatePlanBoxProps): JSX.Element => {
 };
 
 const CreatePlan = ({navigation}: ScreenDefaultProps) => {
+  const {data} = useGetUserPlansQuery({});
+
+  const plans = data?.items?.slice(0, 5) || [];
+
+  const colors = [
+    Colors?.orange_2,
+    Colors?.teal,
+    Colors?.light_orange,
+    Colors?.primary,
+    Colors?.dark_teal,
+  ];
+
   return (
     <View>
       <SpacedRow>
@@ -78,9 +150,22 @@ const CreatePlan = ({navigation}: ScreenDefaultProps) => {
         Start your investment journey by creating a plan"
       </CustomText>
 
-      <View style={{marginTop: 20}}>
+      <ScrollView
+        horizontal
+        showsHorizontalScrollIndicator={false}
+        contentContainerStyle={{marginTop: 20}}>
         <CreatePlanBox onPress={() => navigation.navigate(CREATE_A_PLAN)} />
-      </View>
+
+        {plans.map((plan: PlanItemType, index: number) => (
+          <PlanItem
+            key={plan?.id}
+            title={plan?.plan_name}
+            bgColor={colors[index]}
+            amount={plan?.invested_amount}
+            onPress={() => navigation.navigate(PLAN_DETAIL)}
+          />
+        ))}
+      </ScrollView>
     </View>
   );
 };

@@ -16,4 +16,28 @@ const checkIfPasswordFullFillsConfition = (
   }
 };
 
-export {checkIfPasswordFullFillsConfition};
+const commaFormat = (number: string): string => {
+  const formatedNumber = Number(number.replace(/,/g, ''));
+  return formatedNumber.toString().replace(/\B(?=(\d{3})+(?!\d))/g, ',');
+};
+
+const removeCommaFormat = (number: string): number => {
+  return parseInt(number.replace(/,/g, ''), 10);
+};
+
+const formatCurrency = (
+  amount: number | string | undefined,
+  country = 'USD',
+): string => {
+  return new Intl.NumberFormat('en-US', {
+    style: 'currency',
+    currency: country,
+  }).format(Number(amount) || 0);
+};
+
+export {
+  checkIfPasswordFullFillsConfition,
+  commaFormat,
+  removeCommaFormat,
+  formatCurrency,
+};

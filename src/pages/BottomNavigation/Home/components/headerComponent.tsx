@@ -5,6 +5,7 @@ import CustomText from '../../../../components/CustomText';
 import Colors from '../../../../constants/Colors';
 import Button from '../../../../components/Button';
 import {BellIcon} from '../../../../assets/svgs';
+import {HomeHeaderType} from 'utils/types';
 
 const Row = styled.View`
   flex-direction: row;
@@ -18,15 +19,24 @@ const SpacedRow = styled.View`
   width: 100%;
 `;
 
-const HeaderComponent = () => {
+const HeaderComponent = ({userName}: HomeHeaderType) => {
+  const timeOfDay = new Date().getHours();
+
+  const greeting =
+    timeOfDay < 12
+      ? 'Good morning ☀'
+      : timeOfDay < 18
+      ? 'Good afternoon'
+      : 'Good evening 🌝';
+
   return (
     <SpacedRow>
       <View style={{marginTop: 14}}>
         <CustomText color={Colors.black_4} fontSize={15} fontWeight="400">
-          Good morning ☀
+          {greeting}
         </CustomText>
         <CustomText color={Colors.black_4} fontSize={20} fontWeight="400">
-          Deborah
+          {userName}
         </CustomText>
       </View>
 

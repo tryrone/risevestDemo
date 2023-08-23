@@ -31,7 +31,12 @@ const SignIn = ({navigation}: ScreenDefaultProps) => {
           .unwrap()
           .then((res: any) => {
             storeBearerToken(res.token);
-            navigation.navigate(BOTTOM_NAV);
+            navigation.navigate(BOTTOM_NAV, {
+              screen: 'Home',
+              params: {
+                data: res,
+              },
+            });
           })
           .catch((err: any) => {
             console.log('err', err);

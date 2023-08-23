@@ -51,7 +51,17 @@ const SuccessPage = ({navigation, route}: ScreenDefaultProps) => {
           textColor={Colors.white}
           bgColor={Colors.primary}
           textSize={15}
-          onPress={() => navigateTo && navigation.navigate(navigateTo)}
+          onPress={() => {
+            navigateTo &&
+              navigation.reset({
+                index: 0,
+                routes: [
+                  {
+                    name: navigateTo,
+                  },
+                ],
+              });
+          }}
         />
       </View>
     </SafeAreaWrap>
