@@ -82,6 +82,7 @@ const BottomNavigation = () => {
               borderTopColor: Colors?.white,
               borderTopWidth: 0,
               position: 'relative',
+              paddingBottom: 20,
             },
             null,
           ],

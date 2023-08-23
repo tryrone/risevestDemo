@@ -16,7 +16,7 @@ const PlanChart = () => {
 
 const styles = StyleSheet.create({
   graphCard: {
-    elevation: 5,
+    // elevation: 5,
     borderRadius: 20,
     height: CARD_HEIGHT,
     width: '100%',

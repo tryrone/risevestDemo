@@ -5,7 +5,7 @@ import PageHeader from '../../../components/PageNavigation';
 import CustomText from '../../../components/CustomText';
 import Colors from '../../../constants/Colors';
 import styled from 'styled-components/native';
-import {ScrollView, View} from 'react-native';
+import {Pressable, ScrollView, View} from 'react-native';
 import PlanChart from './PlanChart';
 import {InfoIcon} from '../../../assets/svgs';
 import Button from '../../../components/Button';
@@ -114,93 +114,100 @@ const PlanReview = ({navigation, route}: ScreenDefaultProps) => {
   return (
     <SafeAreaWrap style={{paddingHorizontal: 20}}>
       <PageHeader navigation={navigation} title="Review" />
+
       <ScrollView showsVerticalScrollIndicator={false}>
-        <ReviewHeader data={info} />
+        <Pressable>
+          <ReviewHeader data={info} />
 
-        <SpacedRow>
-          <Row>
-            <Dot bgColor={Colors.inactiveIcon} />
-            <CustomText
-              color={Colors.inactiveIcon}
-              left={6}
-              fontSize={12}
-              fontWeight="400">
-              Investments • $
-              {commaFormat(
-                info?.target_amount ? `${info?.target_amount}` : '0',
-              )}
+          <SpacedRow>
+            <Row>
+              <Dot bgColor={Colors.inactiveIcon} />
+              <CustomText
+                color={Colors.inactiveIcon}
+                left={6}
+                fontSize={12}
+                fontWeight="400">
+                Investments • $
+                {commaFormat(
+                  info?.target_amount ? `${info?.target_amount}` : '0',
+                )}
+              </CustomText>
+            </Row>
+            <Row>
+              <Dot bgColor={Colors.primary} />
+              <CustomText
+                color={Colors.black_4}
+                left={6}
+                fontSize={12}
+                fontWeight="400">
+                Returns • ${' '}
+                {commaFormat(
+                  info?.total_returns ? `${info?.total_returns}` : '0',
+                )}
+              </CustomText>
+            </Row>
+          </SpacedRow>
+
+          <PlanChart />
+
+          <SpacedBetween>
+            <CustomText fontSize={15} fontWeight="400" color={Colors.grey_2}>
+              Estimated monthly investment
             </CustomText>
-          </Row>
-          <Row>
-            <Dot bgColor={Colors.primary} />
-            <CustomText
-              color={Colors.black_4}
-              left={6}
-              fontSize={12}
-              fontWeight="400">
-              Returns • ${' '}
-              {commaFormat(
-                info?.total_returns ? `${info?.total_returns}` : '0',
-              )}
+            <CustomText fontSize={14} fontWeight="400" color={Colors.black_4}>
+              ${commaFormat('0')}
             </CustomText>
-          </Row>
-        </SpacedRow>
+          </SpacedBetween>
 
-        <PlanChart />
+          <RickInfo />
 
-        <SpacedBetween>
-          <CustomText fontSize={15} fontWeight="400" color={Colors.grey_2}>
-            Estimated monthly investment
+          <CustomText
+            color={Colors.grey_1}
+            fontSize={12}
+            top={12}
+            align="center"
+            fontWeight="400">
+            These are your starting settings, they can always be updated.
           </CustomText>
-          <CustomText fontSize={14} fontWeight="400" color={Colors.black_4}>
-            ${commaFormat('0')}
-          </CustomText>
-        </SpacedBetween>
 
-        <RickInfo />
-
-        <CustomText
-          color={Colors.grey_1}
-          fontSize={12}
-          top={12}
-          align="center"
-          fontWeight="400">
-          These are your starting settings, they can always be updated.
-        </CustomText>
-
-        <Button
-          text="Agree & Continue"
-          textColor={Colors.white}
-          fontWeight="700"
-          textSize={15}
-          style={{marginTop: 47}}
-          bgColor={Colors.primary}
-          onPress={() =>
-            navigation.reset({
-              index: 0,
-              routes: [
-                {
-                  name: SUCCESS_PAGE,
-                  params: {
-                    title: 'You just created  \n your plan.',
-                    body: 'Well done',
-                    btnText: 'View plan',
-                    navigateTo: PLAN_DETAIL,
+          <Button
+            text="Agree & Continue"
+            textColor={Colors.white}
+            fontWeight="700"
+            textSize={15}
+            style={{marginTop: 47}}
+            bgColor={Colors.primary}
+            onPress={() =>
+              navigation.reset({
+                index: 0,
+                routes: [
+                  {
+                    name: SUCCESS_PAGE,
+                    params: {
+                      title: 'You just created  \n your plan.',
+                      body: 'Well done',
+                      btnText: 'View plan',
+                      navigateTo: PLAN_DETAIL,
+                      extraData: {
+                        plan: info,
+                        fromCreatePlan: true,
+                      },
+                    },
                   },
-                },
-              ],
-            })
-          }
-        />
-        <Button
-          text="Start over"
-          textColor={Colors.primary}
-          fontWeight="700"
-          textSize={15}
-          style={{marginTop: 10, marginBottom: 30}}
-          bgColor={Colors.grey}
-          onPress={() => navigation.navigate(CREATE_A_PLAN)}
-        />
+                ],
+              })
+            }
+          />
+          <Button
+            text="Start over"
+            textColor={Colors.primary}
+            fontWeight="700"
+            textSize={15}
+            style={{marginTop: 10, marginBottom: 30}}
+            bgColor={Colors.grey}
+            onPress={() => navigation.navigate(CREATE_A_PLAN)}
+          />
+        </Pressable>
       </ScrollView>
     </SafeAreaWrap>
   );

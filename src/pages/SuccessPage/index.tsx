@@ -12,10 +12,12 @@ type SusccessProps = {
   body: string;
   btnText: string;
   navigateTo?: string;
+  extraData?: Record<any, any>;
 };
 
 const SuccessPage = ({navigation, route}: ScreenDefaultProps) => {
-  const {title, body, btnText, navigateTo}: SusccessProps | any = route?.params;
+  const {title, body, btnText, navigateTo, extraData}: SusccessProps | any =
+    route?.params;
   return (
     <SafeAreaWrap style={{paddingHorizontal: 20, alignItems: 'center'}}>
       <SuccessCheck style={{marginTop: '30%'}} />
@@ -58,6 +60,9 @@ const SuccessPage = ({navigation, route}: ScreenDefaultProps) => {
                 routes: [
                   {
                     name: navigateTo,
+                    params: {
+                      ...extraData,
+                    },
                   },
                 ],
               });

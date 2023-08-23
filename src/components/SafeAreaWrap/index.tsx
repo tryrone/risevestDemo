@@ -1,6 +1,7 @@
 import {View, SafeAreaView, ViewStyle} from 'react-native';
 import React from 'react';
 import Colors from '../../constants/Colors';
+import KeyboardShift from 'components/KeyboardAvoidingView';
 
 type SafeAreaProp = {
   children: React.ReactNode;
@@ -25,15 +26,17 @@ const SafeAreaWrap = ({
         backgroundColor: safeAreaBg,
         flex: 1,
       }}>
-      <View
-        style={{
-          backgroundColor: bg,
-          height,
-          width,
-          ...style,
-        }}>
-        {children}
-      </View>
+      <KeyboardShift>
+        <View
+          style={{
+            backgroundColor: bg,
+            height,
+            width,
+            ...style,
+          }}>
+          {children}
+        </View>
+      </KeyboardShift>
     </SafeAreaView>
   );
 };

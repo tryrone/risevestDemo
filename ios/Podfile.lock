@@ -433,8 +433,6 @@ PODS:
     - React-Core
   - RNCClipboard (1.11.2):
     - React-Core
-  - RNDateTimePicker (7.1.0):
-    - React-Core
   - RNGestureHandler (2.10.0):
     - React-Core
   - RNReactNativeHapticFeedback (2.0.3):
@@ -544,7 +542,6 @@ DEPENDENCIES:
   - ReactCommon/turbomodule/core (from `../node_modules/react-native/ReactCommon`)
   - "RNCAsyncStorage (from `../node_modules/@react-native-async-storage/async-storage`)"
   - "RNCClipboard (from `../node_modules/@react-native-clipboard/clipboard`)"
-  - "RNDateTimePicker (from `../node_modules/@react-native-community/datetimepicker`)"
   - RNGestureHandler (from `../node_modules/react-native-gesture-handler`)
   - RNReactNativeHapticFeedback (from `../node_modules/react-native-haptic-feedback`)
   - RNReanimated (from `../node_modules/react-native-reanimated`)
@@ -652,8 +649,6 @@ EXTERNAL SOURCES:
     :path: "../node_modules/@react-native-async-storage/async-storage"
   RNCClipboard:
     :path: "../node_modules/@react-native-clipboard/clipboard"
-  RNDateTimePicker:
-    :path: "../node_modules/@react-native-community/datetimepicker"
   RNGestureHandler:
     :path: "../node_modules/react-native-gesture-handler"
   RNReactNativeHapticFeedback:
@@ -723,7 +718,6 @@ SPEC CHECKSUMS:
   ReactCommon: 85c98ab0a509e70bf5ee5d9715cf68dbf495b84c
   RNCAsyncStorage: f57e929cd7757f2cb3dd8186d123c09e8281a1ad
   RNCClipboard: 3f0451a8100393908bea5c5c5b16f96d45f30bfc
-  RNDateTimePicker: 7ecd54a97fc3749f38c3c89a171f6cbd52f3c142
   RNGestureHandler: e145476da655f3dbc48ef2f0a08cf7a34338c02b
   RNReactNativeHapticFeedback: afa5bf2794aecbb2dba2525329253da0d66656df
   RNReanimated: b1220a0e5168745283ff5d53bfc7d2144b2cee1b

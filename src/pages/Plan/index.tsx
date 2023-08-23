@@ -76,6 +76,7 @@ const PlanHeader = ({goBack, data}: PlanHeaderProps) => {
 
 const Plan = ({navigation, route}: ScreenDefaultProps) => {
   const plan = route?.params?.plan;
+  // const fromCreatePlan = route?.params?.fromCreatePlan;
 
   const {data} = useGetPlanByIdQuery(plan?.id, {
     skip: !plan?.id,
@@ -86,7 +87,11 @@ const Plan = ({navigation, route}: ScreenDefaultProps) => {
   const planData = data || plan;
 
   const goBack = () => {
+    // if (fromCreatePlan) {
     navigation?.navigate(BOTTOM_NAV);
+    // } else {
+    // navigation?.goBack();
+    // }
   };
 
   return (

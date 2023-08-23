@@ -4,7 +4,7 @@ import CustomText from '../../components/CustomText';
 import Colors from '../../constants/Colors';
 import TextInput, {Password} from '../../components/TextInput';
 import Button from '../../components/Button';
-import {TouchableOpacity} from 'react-native';
+import {Platform, TouchableOpacity} from 'react-native';
 import {ScreenDefaultProps} from '../../navigation/nativationType';
 import {BOTTOM_NAV, SIGN_UP} from '../../navigation/constants';
 import {Formik} from 'formik';
@@ -109,7 +109,7 @@ const SignIn = ({navigation}: ScreenDefaultProps) => {
             style={{
               position: 'absolute',
               alignSelf: 'center',
-              bottom: 30,
+              bottom: Platform.OS === 'android' ? 50 : 30,
             }}>
             <CustomText
               fontSize={15}

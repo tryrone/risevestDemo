@@ -56,6 +56,7 @@ const Onboarding = ({navigation}: ScreenDefaultProps) => {
   const scrollToIndex = (index: number) => {
     if (flatListRef.current) {
       flatListRef.current.scrollToIndex({index: index, animated: true});
+      setActiveIndex(index);
     }
   };
 
