@@ -13,9 +13,11 @@ import PerformanceChart from './PerformanceChart';
 import EarningsData from './EarningsData';
 import RecentTransactions from './RecentTransactions';
 import {BOTTOM_NAV} from 'navigation/constants';
+import {useGetPlanByIdQuery} from 'rtk/services/user/userApi';
 
 interface PlanHeaderProps {
   goBack: () => void;
+  data?: Record<any, any>;
 }
 
 const RainbowWrap = styled.Image`
@@ -40,7 +42,7 @@ const SpacedRow = styled.View`
   margin-bottom: 35px;
 `;
 
-const PlanHeader = ({goBack}: PlanHeaderProps) => {
+const PlanHeader = ({goBack, data}: PlanHeaderProps) => {
   return (
     <SpacedRow>
       <TouchableOpacity onPress={goBack}>
@@ -63,7 +65,7 @@ const PlanHeader = ({goBack}: PlanHeaderProps) => {
           fontSize={15}
           align="center"
           fontWeight="400">
-          for Kate Ventures
+          for {data?.plan_name}
         </CustomText>
       </View>
 
@@ -72,10 +74,21 @@ const PlanHeader = ({goBack}: PlanHeaderProps) => {
   );
 };
 
-const Plan = ({navigation}: ScreenDefaultProps) => {
+const Plan = ({navigation, route}: ScreenDefaultProps) => {
+  const plan = route?.params?.plan;
+
+  const {data} = useGetPlanByIdQuery(plan?.id, {
+    skip: !plan?.id,
+    refetchOnFocus: true,
+    refetchOnMountOrArgChange: true,
+  });
+
+  const planData = data || plan;
+
   const goBack = () => {
     navigation?.navigate(BOTTOM_NAV);
   };
+
   return (
     <CardSafeAreaWrap
       safeAreaBg={Colors?.white}
@@ -84,11 +97,11 @@ const Plan = ({navigation}: ScreenDefaultProps) => {
       bg={Colors.white}>
       <RainbowWrap source={plan_header} resizeMode="stretch" />
       <PaddedView>
-        <PlanHeader goBack={goBack} />
+        <PlanHeader goBack={goBack} data={planData} />
         <ScrollView showsVerticalScrollIndicator={false}>
-          <PlanBalance />
-          <PerformanceChart />
-          <EarningsData />
+          <PlanBalance data={planData} />
+          <PerformanceChart data={planData} />
+          <EarningsData data={planData} />
           <RecentTransactions />
         </ScrollView>
       </PaddedView>

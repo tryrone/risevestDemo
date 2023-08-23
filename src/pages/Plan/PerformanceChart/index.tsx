@@ -4,6 +4,7 @@ import Colors from '../../../constants/Colors';
 import CustomText from '../../../components/CustomText';
 import SegmentControlTab from '../../../components/segmentControlTab';
 import Fonts from '../../../constants/Fonts';
+import {commaFormat} from 'utils/helperFunctions';
 
 const ChartContainer = styled.View`
   height: 424px;
@@ -83,7 +84,15 @@ const Sections = () => {
   );
 };
 
-const PerformanceChart = () => {
+const PerformanceChart = ({data}: any) => {
+  const formattedDate = () => {
+    const date = new Date(data?.created_at) || new Date();
+    const month = date.toLocaleString('default', {month: 'short'});
+    const day = date.getDate();
+    const year = date.getFullYear();
+    return `${month} ${day}, ${year}`;
+  };
+
   return (
     <ChartContainer
       style={{
@@ -110,14 +119,14 @@ const PerformanceChart = () => {
         fontSize={24}
         align="center"
         fontWeight="700">
-        $208.39
+        ${commaFormat(`${data?.target_amount}` || '0')}
       </CustomText>
       <CustomText
         color={Colors.white}
         fontSize={13}
         align="center"
         fontWeight="400">
-        July 26th, 2021
+        {formattedDate()}
       </CustomText>
       <PaddedView>
         <SpacedRow>
@@ -128,7 +137,7 @@ const PerformanceChart = () => {
               left={6}
               fontSize={12}
               fontWeight="400">
-              Investments • $50,400
+              Investments • ${commaFormat(`${data?.invested_amount}` || '0')}
             </CustomText>
           </Row>
           <Row>
@@ -138,7 +147,7 @@ const PerformanceChart = () => {
               left={6}
               fontSize={12}
               fontWeight="400">
-              Returns • $20,803
+              Returns • ${commaFormat(`${data?.total_returns}` || '0')}
             </CustomText>
           </Row>
         </SpacedRow>

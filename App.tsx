@@ -6,8 +6,15 @@ import 'react-native-gesture-handler';
 import {Provider} from 'react-redux';
 import {store} from 'rtk/store';
 import {ToastProvider} from 'react-native-toast-notifications';
+import {AppContext} from 'context/appContext';
 
 function App(): JSX.Element {
+  const [appData, setAppData] = React.useState<Record<any, any>>({
+    rates: {
+      buy_rate: 0,
+      sell_rate: 0,
+    },
+  });
   return (
     <Provider store={store}>
       <NavigationContainer ref={navigationRef}>
@@ -16,7 +23,13 @@ function App(): JSX.Element {
           duration={5000}
           animationType="slide-in"
           animationDuration={250}>
-          <NavigationComponent />
+          <AppContext.Provider
+            value={{
+              appData,
+              setAppData,
+            }}>
+            <NavigationComponent />
+          </AppContext.Provider>
         </ToastProvider>
       </NavigationContainer>
     </Provider>

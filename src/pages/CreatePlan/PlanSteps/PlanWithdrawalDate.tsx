@@ -34,7 +34,6 @@ const PlanWithdrawalDate = ({navigation}: ScreenDefaultProps) => {
         });
       })
       .catch((err: any) => {
-        console.log(err);
         toast.show(
           err?.data?.message || 'Something went wrong, please try again',
           {

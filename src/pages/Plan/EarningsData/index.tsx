@@ -1,8 +1,15 @@
 import {View} from 'react-native';
-import React from 'react';
+import React, {useContext} from 'react';
 import styled from 'styled-components/native';
 import Colors from '../../../constants/Colors';
 import CustomText from '../../../components/CustomText';
+import {
+  commaFormat,
+  convertInvestedAmountToNaira,
+  formatDate,
+} from 'utils/helperFunctions';
+import {AppContext} from 'context/appContext';
+import {AppContextType} from 'utils/types';
 
 const SpacedRow = styled.View<{isLast?: boolean}>`
   flex-direction: row;
@@ -14,38 +21,50 @@ const SpacedRow = styled.View<{isLast?: boolean}>`
     isLast ? 'transparent' : Colors.light_grey_2};
 `;
 
-const EarningsData = () => {
-  const data = [
+const EarningsData = ({data}: any) => {
+  const context = useContext<AppContextType>(AppContext);
+  const {appData} = context;
+
+  const sellRate = appData?.rates?.sell_rate || 0;
+
+  const earningData = [
     {
       title: 'Total earnings',
-      value: '$12,000.09',
+      value: `$${commaFormat(
+        `${(data?.invested_amount || 0) + (data?.total_returns || 0)}`,
+      )}`,
     },
     {
       title: 'Current earnings',
-      value: '$12,000.09',
+      value: `$${commaFormat(
+        `${(data?.invested_amount || 0) + (data?.total_returns || 0)}`,
+      )}`,
     },
     {
       title: 'Deposit value',
-      value: '$50,543.05',
+      value: `$${data?.invested_amount || 0}`,
     },
     {
       title: 'Balance in Naira (*₦505)',
-      value: '₦31,918,837.5',
+      value: `₦ ${convertInvestedAmountToNaira(
+        Number(data?.invested_amount),
+        sellRate,
+      )}`,
     },
     {
       title: 'Plan created on',
-      value: '23rd July, 2019',
+      value: data?.created_at ? formatDate(data?.created_at) : '',
     },
     {
       title: 'Maturity date',
-      value: '24th July 2022',
+      value: data?.maturity_date ? formatDate(data?.maturity_date) : '',
     },
   ];
   return (
     <View style={{marginTop: 20}}>
-      {data.map((item, index) => {
+      {earningData.map((item, index) => {
         return (
-          <SpacedRow key={index} isLast={index === data.length - 1}>
+          <SpacedRow key={index} isLast={index === earningData?.length - 1}>
             <CustomText
               color={Colors.grey_2}
               fontSize={15}

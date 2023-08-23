@@ -44,6 +44,26 @@ export const userApi = createApi({
         body: data,
       }),
     }),
+
+    getPlanById: build.query({
+      query: id => ({
+        url: `/plans/${id}`,
+        method: 'GET',
+      }),
+    }),
+
+    getConversionRates: build.query({
+      query: () => ({
+        url: '/rates',
+        method: 'GET',
+      }),
+    }),
+    getQuotes: build.query({
+      query: () => ({
+        url: '/quotes',
+        method: 'GET',
+      }),
+    }),
   }),
 });
 
@@ -52,5 +72,8 @@ export const {
   useGetUserSessionQuery,
   useGetUserPlansQuery,
   useCreatePlanMutation,
+  useGetPlanByIdQuery,
+  useGetConversionRatesQuery,
+  useGetQuotesQuery,
 } = userApi;
 export default userApi;

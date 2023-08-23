@@ -35,9 +35,24 @@ const formatCurrency = (
   }).format(Number(amount) || 0);
 };
 
+const formatDate = (dateString: string) => {
+  const date = new Date(dateString) || new Date();
+  const month = date.toLocaleString('default', {month: 'short'});
+  const day = date.getDate();
+  const year = date.getFullYear();
+  return `${month} ${day}, ${year}`;
+};
+
+const convertInvestedAmountToNaira = (amount: number, sell_rate: number) => {
+  const nairaAmount = amount * sell_rate;
+  return Number(nairaAmount).toFixed(2);
+};
+
 export {
   checkIfPasswordFullFillsConfition,
   commaFormat,
   removeCommaFormat,
   formatCurrency,
+  formatDate,
+  convertInvestedAmountToNaira,
 };

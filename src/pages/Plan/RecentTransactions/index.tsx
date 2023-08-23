@@ -51,6 +51,7 @@ const TransactionItem = () => {
 };
 
 const RecentTransactions = () => {
+  const transactions: any[] = [];
   return (
     <View style={{paddingTop: 20, paddingBottom: 150}}>
       <SpacedRow style={{marginBottom: 14}}>
@@ -69,8 +70,9 @@ const RecentTransactions = () => {
           View all
         </CustomText>
       </SpacedRow>
-
-      <TransactionItem />
+      {transactions?.map((transaction, index) => (
+        <TransactionItem key={index} />
+      ))}
     </View>
   );
 };

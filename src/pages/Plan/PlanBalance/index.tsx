@@ -1,10 +1,14 @@
 import {View} from 'react-native';
-import React from 'react';
+import React, {useContext} from 'react';
 import CustomText from '../../../components/CustomText';
 import Colors from '../../../constants/Colors';
 import {PlusIcon, QuestionInfoIcon} from '../../../assets/svgs';
 import styled from 'styled-components/native';
 import Button from '../../../components/Button';
+import {commaFormat, convertInvestedAmountToNaira} from 'utils/helperFunctions';
+import Animated, {useAnimatedStyle, withTiming} from 'react-native-reanimated';
+import {AppContextType, ProgressBarType} from 'utils/types';
+import {AppContext} from 'context/appContext';
 
 const SpacedRow = styled.View`
   flex-direction: row;
@@ -22,10 +26,9 @@ const ProgressWrap = styled.View`
   margin-top: 15px;
 `;
 
-const ProgressFill = styled.View<{percent: number}>`
-  width: ${props => props.percent || 0}%;
+const ProgressFill = styled(Animated.View)`
   height: 100%;
-  border-radius: 100px;
+  border-radius: 10px;
   background-color: ${Colors.primary};
 `;
 
@@ -38,15 +41,28 @@ const InfoWrap = styled.View`
   margin-top: 25px;
 `;
 
-const Progress = () => {
+const Progress = ({percentage}: ProgressBarType) => {
+  const animatedStyle = useAnimatedStyle(() => {
+    return {
+      width: withTiming(`${percentage}%`, {duration: 500}),
+    };
+  });
   return (
     <ProgressWrap>
-      <ProgressFill percent={5} />
+      <ProgressFill style={animatedStyle} />
     </ProgressWrap>
   );
 };
 
-const PlanBalance = () => {
+const PlanBalance = ({data}: any) => {
+  const percentage =
+    (data?.invested_amount || 0 / data?.target_amount || 0) * 100;
+
+  const context = useContext<AppContextType>(AppContext);
+  const {appData} = context;
+
+  const sellRate = appData?.rates?.sell_rate || 0;
+
   return (
     <View
       style={{
@@ -64,14 +80,16 @@ const PlanBalance = () => {
         fontSize={24}
         align="center"
         fontWeight="700">
-        $0.00
+        ${commaFormat(`${data?.invested_amount}` || '0')}
       </CustomText>
       <CustomText
         color={Colors.grey_1}
         fontSize={15}
         align="center"
         fontWeight="400">
-        ~ ₦0.00 <QuestionInfoIcon />
+        ~ ₦
+        {convertInvestedAmountToNaira(Number(data?.invested_amount), sellRate)}
+        <QuestionInfoIcon />
       </CustomText>
 
       <CustomText
@@ -88,7 +106,7 @@ const PlanBalance = () => {
         fontSize={16}
         align="center"
         fontWeight="400">
-        +$5,000.43 • +12.4%
+        +${commaFormat(`${data?.total_returns}` || '0')} • 0.0%
       </CustomText>
 
       <SpacedRow>
@@ -97,17 +115,17 @@ const PlanBalance = () => {
           fontSize={15}
           align="center"
           fontWeight="400">
-          0.01 achieved
+          {Math.round(percentage).toFixed(2)} achieved
         </CustomText>
         <CustomText
           color={Colors.grey_2}
           fontSize={15}
           align="center"
           fontWeight="400">
-          Target: $20,053.90
+          Target: ${commaFormat(`${data?.target_amount}` || '0')}
         </CustomText>
       </SpacedRow>
-      <Progress />
+      <Progress percentage={percentage} />
 
       <InfoWrap>
         <CustomText

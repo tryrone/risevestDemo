@@ -1,4 +1,5 @@
-import React from 'react';
+/* eslint-disable react-hooks/exhaustive-deps */
+import React, {useContext} from 'react';
 import styled from 'styled-components/native';
 import CardSafeAreaWrap from './components/cardSafeArea';
 import Colors from '../../../constants/Colors';
@@ -12,8 +13,12 @@ import {ScrollView} from 'react-native';
 import ContactUs from './components/contactUs';
 import QuoteCard from './components/quoteCard';
 import {ScreenDefaultProps} from '../../../navigation/nativationType';
-import {useGetUserSessionQuery} from 'rtk/services/user/userApi';
-import {SessionData} from 'utils/types';
+import {
+  useGetConversionRatesQuery,
+  useGetUserSessionQuery,
+} from 'rtk/services/user/userApi';
+import {AppContextType, SessionData} from 'utils/types';
+import {AppContext} from 'context/appContext';
 
 const RainbowWrap = styled.Image`
   width: 100%;
@@ -32,7 +37,29 @@ const PaddedView = styled.View`
 const Home = ({navigation, route}: ScreenDefaultProps) => {
   const info = route?.params?.data;
 
-  const {data} = useGetUserSessionQuery({});
+  const context = useContext<AppContextType>(AppContext);
+  const {setAppData} = context;
+
+  const {data} = useGetUserSessionQuery(
+    {},
+    {
+      refetchOnFocus: true,
+      refetchOnMountOrArgChange: true,
+    },
+  );
+  const {data: ratesData, isLoading} = useGetConversionRatesQuery(
+    {},
+    {
+      refetchOnFocus: true,
+      refetchOnMountOrArgChange: true,
+    },
+  );
+
+  React.useEffect(() => {
+    if (!isLoading && ratesData) {
+      setAppData({rates: ratesData});
+    }
+  }, [ratesData, isLoading]);
 
   const sessionData: SessionData | undefined = info || data;
 

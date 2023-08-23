@@ -3,6 +3,7 @@ import styled from 'styled-components/native';
 import Colors from '../../../../constants/Colors';
 import CustomText from '../../../../components/CustomText';
 import {RiseIcon, ShareIcon} from '../../../../assets/svgs';
+import {useGetQuotesQuery} from 'rtk/services/user/userApi';
 
 const Card = styled.View`
   margin-top: 30px;
@@ -28,6 +29,8 @@ const SpacedRow = styled.View`
 `;
 
 const QuoteCard = () => {
+  const {data} = useGetQuotesQuery({});
+
   return (
     <>
       <Card>
@@ -40,14 +43,12 @@ const QuoteCard = () => {
           fontSize={15}
           fontWeight="400"
           style={{lineHeight: '22px'}}>
-          We have no intention of rotating capital out of strong multi-year
-          investments because they’ve recently done well or because ‘growth’ has
-          out performed ‘value’.
+          {data?.quote}
         </CustomText>
 
         <SpacedRow>
           <CustomText color={Colors.white} fontSize={15} fontWeight="700">
-            Carl Sagan
+            {data?.author}
           </CustomText>
 
           <ShareIcon />

@@ -60,3 +60,15 @@ export type CreatePlanContextType = {
     }>
   >;
 };
+
+export type AppStateType = {
+  rates: {
+    buy_rate: number;
+    sell_rate: number;
+  };
+};
+
+export type AppContextType = {
+  appData: AppStateType;
+  setAppData: React.Dispatch<React.SetStateAction<AppStateType>>;
+};

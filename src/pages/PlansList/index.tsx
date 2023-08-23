@@ -8,6 +8,8 @@ import styled from 'styled-components/native';
 import {View} from 'react-native';
 import {WhiteArrowRightSvg} from '../../assets/svgs';
 import {PLAN_DETAIL} from '../../navigation/constants';
+import {PlanItemType} from 'utils/types';
+import {useGetUserPlansQuery} from 'rtk/services/user/userApi';
 
 interface PlanItemProps {
   title?: string;
@@ -61,7 +63,7 @@ export const PlanItem = ({title, bgColor, amount, onPress}: PlanItemProps) => {
             align="left"
             fontWeight="400"
             color={Colors.white}>
-            {amount}
+            ${amount}
           </CustomText>
         </View>
         <WhiteArrowRightSvg />
@@ -70,24 +72,32 @@ export const PlanItem = ({title, bgColor, amount, onPress}: PlanItemProps) => {
   );
 };
 
-const PlansList = ({navigation}: ScreenDefaultProps) => {
-  const plans = [
+const PlansList = ({navigation, route}: ScreenDefaultProps) => {
+  const {data} = useGetUserPlansQuery(
+    {},
     {
-      title: 'Plan a wedding',
-      amount: '$1,983.09',
-      bgColor: Colors.teal,
+      refetchOnFocus: true,
+      refetchOnMountOrArgChange: true,
     },
-    {
-      title: 'Start a Business',
-      amount: '$1,983.09',
-      bgColor: Colors.orange_2,
-    },
-    {
-      title: 'Build Wealth',
-      amount: '$1,983.09',
-      bgColor: Colors.dark_teal,
-    },
+  );
+
+  const plansData = data?.items || route?.params?.plans;
+
+  const colors = [
+    Colors.orange_2,
+    Colors.dark_teal,
+    Colors.black_4,
+    Colors.orange,
+    Colors.pink,
   ];
+
+  const plans = plansData?.map((plan: PlanItemType, index: number) => ({
+    title: plan.plan_name,
+    amount: plan.target_amount,
+    bgColor: colors[index % colors?.length],
+    ...plan,
+  }));
+
   return (
     <SafeAreaWrap style={{paddingHorizontal: 20}}>
       <PageHeader navigation={navigation} title="Choose from plans" />
@@ -101,12 +111,12 @@ const PlansList = ({navigation}: ScreenDefaultProps) => {
         Tap on any of the plans to select
       </CustomText>
       <RowWrap>
-        {plans.map((plan, index) => (
+        {plans.map((plan: any, index: number) => (
           <PlanItem
             key={index}
             {...plan}
             onPress={() => {
-              navigation.navigate(PLAN_DETAIL);
+              navigation.navigate(PLAN_DETAIL, {plan});
             }}
           />
         ))}

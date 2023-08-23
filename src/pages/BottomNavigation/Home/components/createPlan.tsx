@@ -110,14 +110,20 @@ const CreatePlanBox = ({onPress}: CreatePlanBoxProps): JSX.Element => {
 };
 
 const CreatePlan = ({navigation}: ScreenDefaultProps) => {
-  const {data} = useGetUserPlansQuery({});
+  const {data} = useGetUserPlansQuery(
+    {},
+    {
+      refetchOnFocus: true,
+      refetchOnMountOrArgChange: true,
+    },
+  );
 
-  const plans = data?.items?.slice(0, 5) || [];
+  const plans = data?.items?.slice(0, 5)?.reverse() || [];
 
   const colors = [
     Colors?.orange_2,
     Colors?.teal,
-    Colors?.light_orange,
+    Colors?.orange,
     Colors?.primary,
     Colors?.dark_teal,
   ];
@@ -129,7 +135,12 @@ const CreatePlan = ({navigation}: ScreenDefaultProps) => {
           Create a plan
         </CustomText>
 
-        <Row onPress={() => navigation.navigate(PLANS_LIST)}>
+        <Row
+          onPress={() =>
+            navigation.navigate(PLANS_LIST, {
+              plans,
+            })
+          }>
           <CustomText
             color={Colors.inactiveIcon}
             fontSize={15}
@@ -161,8 +172,8 @@ const CreatePlan = ({navigation}: ScreenDefaultProps) => {
             key={plan?.id}
             title={plan?.plan_name}
             bgColor={colors[index]}
-            amount={plan?.invested_amount}
-            onPress={() => navigation.navigate(PLAN_DETAIL)}
+            amount={plan?.target_amount}
+            onPress={() => navigation.navigate(PLAN_DETAIL, {plan})}
           />
         ))}
       </ScrollView>
