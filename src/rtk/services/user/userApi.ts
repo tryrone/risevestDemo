@@ -64,6 +64,12 @@ export const userApi = createApi({
         method: 'GET',
       }),
     }),
+    getBanks: build.query({
+      query: () => ({
+        url: '/banks',
+        method: 'GET',
+      }),
+    }),
   }),
 });
 
@@ -75,5 +81,6 @@ export const {
   useGetPlanByIdQuery,
   useGetConversionRatesQuery,
   useGetQuotesQuery,
+  useGetBanksQuery,
 } = userApi;
 export default userApi;

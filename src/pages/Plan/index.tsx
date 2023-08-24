@@ -104,7 +104,7 @@ const Plan = ({navigation, route}: ScreenDefaultProps) => {
       <PaddedView>
         <PlanHeader goBack={goBack} data={planData} />
         <ScrollView showsVerticalScrollIndicator={false}>
-          <PlanBalance data={planData} />
+          <PlanBalance data={planData} navigation={navigation} />
           <PerformanceChart data={planData} />
           <EarningsData data={planData} />
           <RecentTransactions />

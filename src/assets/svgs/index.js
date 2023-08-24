@@ -35,6 +35,13 @@ import QuestionInfoIcon from './question_icon.svg';
 import CreditIcon from './credit_icon.svg';
 import DebitIcon from './debit_icon.svg';
 import WhiteArrowRightSvg from './white_arrow_right.svg';
+import BankIcon from './bank_icon.svg';
+import CardIcon from './card_icon.svg';
+import CryptoIcon from './crypto_icon.svg';
+import DebitSvg from './debit_svg.svg';
+import UsdIcon from './usd_debit.svg';
+import CloseIcon from './close_icon.svg';
+import ArrowRight from './arrow_right.svg';
 
 export {
   ActivePassword,
@@ -74,4 +81,11 @@ export {
   CreditIcon,
   DebitIcon,
   WhiteArrowRightSvg,
+  BankIcon,
+  CardIcon,
+  CryptoIcon,
+  DebitSvg,
+  UsdIcon,
+  CloseIcon,
+  ArrowRight,
 };

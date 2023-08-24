@@ -16,6 +16,7 @@ export default {
   grey: '#71879C1A',
   grey_1: '#71879C',
   grey_2: '#71879C',
+  grey_3: '#838F91',
   border: '#E1E8ED',
   placeholderColor: '#292F33',
   error: '#ff6347',

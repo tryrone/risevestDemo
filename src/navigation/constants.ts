@@ -11,3 +11,5 @@ export const CREATE_PLAN_STEPS = 'CREATE_PLAN_STEPS';
 export const PLAN_REVIEW = 'PLAN_REVIEW';
 export const PLAN_DETAIL = 'PLAN_DETAIL';
 export const PLANS_LIST = 'PLANS_LIST';
+export const FUND_PLAN = 'FUND_PLAN';
+export const SELECT_BANK = 'SELECT_BANK';

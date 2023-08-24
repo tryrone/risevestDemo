@@ -9,6 +9,7 @@ import {commaFormat, convertInvestedAmountToNaira} from 'utils/helperFunctions';
 import Animated, {useAnimatedStyle, withTiming} from 'react-native-reanimated';
 import {AppContextType, ProgressBarType} from 'utils/types';
 import {AppContext} from 'context/appContext';
+import {FUND_PLAN} from 'navigation/constants';
 
 const SpacedRow = styled.View`
   flex-direction: row;
@@ -54,7 +55,7 @@ const Progress = ({percentage}: ProgressBarType) => {
   );
 };
 
-const PlanBalance = ({data}: any) => {
+const PlanBalance = ({data, navigation}: any) => {
   const percentage =
     (data?.invested_amount || 0 / data?.target_amount || 0) * 100;
 
@@ -151,6 +152,7 @@ const PlanBalance = ({data}: any) => {
         style={{
           marginTop: 24,
         }}
+        onPress={() => navigation?.navigate(FUND_PLAN)}
       />
     </View>
   );

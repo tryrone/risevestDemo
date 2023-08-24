@@ -72,3 +72,24 @@ export type AppContextType = {
   appData: AppStateType;
   setAppData: React.Dispatch<React.SetStateAction<AppStateType>>;
 };
+
+export type FundPlanType = {
+  data: {
+    icon: JSX.Element;
+    title: string;
+    timeline: string;
+    rate: string;
+    fee: string;
+  };
+  isLast: boolean;
+  onPress: () => void;
+};
+
+export type BankItemType = {
+  data: {
+    accountNumber: string;
+    bankName: string;
+    accountName: string;
+  };
+  onPress: () => void;
+};

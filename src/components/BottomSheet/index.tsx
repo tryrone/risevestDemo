@@ -86,7 +86,11 @@ const BottomSheet = ({
   };
 
   return (
-    <Modal visible={isOpen} transparent={true}>
+    <Modal
+      visible={isOpen}
+      transparent={true}
+      onTouchCancel={closeModal}
+      onDismiss={closeModal}>
       <FullContainer>
         <BlackBg close={() => closeModal()} />
         <Animated.View

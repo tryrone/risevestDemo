@@ -7,10 +7,12 @@ import {
   CREATE_A_PLAN,
   CREATE_PIN,
   CREATE_PLAN_STEPS,
+  FUND_PLAN,
   ONBOARDING,
   PLANS_LIST,
   PLAN_DETAIL,
   PLAN_REVIEW,
+  SELECT_BANK,
   SIGN_IN,
   SIGN_UP,
   SUCCESS_PAGE,
@@ -31,6 +33,8 @@ import PlansList from 'pages/PlansList';
 import LoadingScreen from 'pages/LoadingScreen';
 import {useSelector} from 'react-redux';
 import {RootState} from 'rtk/store';
+import FundPlan from 'pages/FundPlan';
+import SelectBank from 'pages/SelectBank';
 
 const Stack = createStackNavigator();
 
@@ -46,8 +50,6 @@ const NavigationComponent = () => {
       setIsCheckingData(false);
     }, 5000);
   }, [isCheckingData]);
-
-  console.log('authenticated', authenticated);
 
   const initialRoute = authenticated ? BOTTOM_NAV : ONBOARDING;
 
@@ -72,6 +74,8 @@ const NavigationComponent = () => {
           <Stack.Screen name={PLAN_REVIEW} component={PlanReview} />
           <Stack.Screen name={PLAN_DETAIL} component={Plan} />
           <Stack.Screen name={PLANS_LIST} component={PlansList} />
+          <Stack.Screen name={FUND_PLAN} component={FundPlan} />
+          <Stack.Screen name={SELECT_BANK} component={SelectBank} />
         </>
       )}
     </Stack.Navigator>
