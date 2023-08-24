@@ -28,26 +28,28 @@ import PlanSteps from 'pages/CreatePlan/PlanSteps';
 import PlanReview from 'pages/CreatePlan/PlanReview';
 import Plan from 'pages/Plan';
 import PlansList from 'pages/PlansList';
-import {getBearerToken} from 'utils/localStorage';
 import LoadingScreen from 'pages/LoadingScreen';
+import {useSelector} from 'react-redux';
+import {RootState} from 'rtk/store';
 
 const Stack = createStackNavigator();
 
 const NavigationComponent = () => {
-  const [data, setData] = useState<any>();
   const [isCheckingData, setIsCheckingData] = useState<boolean>(true);
 
-  useEffect(() => {
-    getBearerToken().then(token => {
-      setData(token);
-    });
+  const authenticated = useSelector(
+    (state: RootState) => state?.persistedReducer.auth.authenticated,
+  );
 
+  useEffect(() => {
     setTimeout(() => {
       setIsCheckingData(false);
     }, 5000);
   }, [isCheckingData]);
 
-  const initialRoute = data ? BOTTOM_NAV : ONBOARDING;
+  console.log('authenticated', authenticated);
+
+  const initialRoute = authenticated ? BOTTOM_NAV : ONBOARDING;
 
   return (
     <Stack.Navigator

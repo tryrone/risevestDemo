@@ -12,10 +12,14 @@ import {createAccountSchema} from 'schemas/forms';
 import {useLoginMutation} from 'rtk/services/auth/authApi';
 import {useToast} from 'react-native-toast-notifications';
 import {storeBearerToken} from 'utils/localStorage';
+import {useDispatch} from 'react-redux';
+import {loginUserSuccess} from 'rtk/services/auth/authSlice';
 
 const SignIn = ({navigation}: ScreenDefaultProps) => {
   const toast = useToast();
   const [loginUser, {isLoading}] = useLoginMutation();
+  const dispatch = useDispatch();
+
   return (
     <Formik
       initialValues={{
@@ -31,6 +35,7 @@ const SignIn = ({navigation}: ScreenDefaultProps) => {
           .unwrap()
           .then((res: any) => {
             storeBearerToken(res.token);
+            dispatch(loginUserSuccess(res.token));
             navigation.navigate(BOTTOM_NAV, {
               screen: 'Home',
               params: {

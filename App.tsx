@@ -4,9 +4,10 @@ import {NavigationContainer} from '@react-navigation/native';
 import {navigationRef} from 'navigation/RootNavigation';
 import 'react-native-gesture-handler';
 import {Provider} from 'react-redux';
-import {store} from 'rtk/store';
+import {persistor, store} from 'rtk/store';
 import {ToastProvider} from 'react-native-toast-notifications';
 import {AppContext} from 'context/appContext';
+import {PersistGate} from 'redux-persist/integration/react';
 
 function App(): JSX.Element {
   const [appData, setAppData] = React.useState<Record<any, any>>({
@@ -17,21 +18,23 @@ function App(): JSX.Element {
   });
   return (
     <Provider store={store}>
-      <NavigationContainer ref={navigationRef}>
-        <ToastProvider
-          placement="bottom"
-          duration={5000}
-          animationType="slide-in"
-          animationDuration={250}>
-          <AppContext.Provider
-            value={{
-              appData,
-              setAppData,
-            }}>
-            <NavigationComponent />
-          </AppContext.Provider>
-        </ToastProvider>
-      </NavigationContainer>
+      <PersistGate loading={null} persistor={persistor}>
+        <NavigationContainer ref={navigationRef}>
+          <ToastProvider
+            placement="bottom"
+            duration={5000}
+            animationType="slide-in"
+            animationDuration={250}>
+            <AppContext.Provider
+              value={{
+                appData,
+                setAppData,
+              }}>
+              <NavigationComponent />
+            </AppContext.Provider>
+          </ToastProvider>
+        </NavigationContainer>
+      </PersistGate>
     </Provider>
   );
 }
